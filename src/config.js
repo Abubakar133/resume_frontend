@@ -2,4 +2,4 @@
 
 //http://127.0.0.1:5000/api
 
-export const BASE_URL = "https://resume-backend-puce.vercel.app/";
+export const BASE_URL = "https://resume-backend-puce.vercel.app/api";
