@@ -139,21 +139,21 @@ function Header() {
       ></div>
     )}
     <div className="flex flex-col items-center justify-center h-full text-white">
-      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group">
-        <span className="relative z-10">Home</span>
+      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group"  onClick={() => navigate('/')}>
+        <span className="relative z-10"  >Home</span>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
 
-      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group">
-        <span className="relative z-10">About Us</span>
+      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() => navigate('/')}>
+        <span className="relative z-10" >About Us</span>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
-      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group">
+      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() => navigate('/')}>
         <span className="relative z-10">Contact</span>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
 
-      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group">
+      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() =>navigate('/Dashboard')}>
         <span className="relative z-10">CV Generator</span>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
