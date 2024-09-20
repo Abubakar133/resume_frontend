@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { BASE_URL } from "../config";
 const PdfPreviewPage = () => {
   const [pdfLinks, setPdfLinks] = useState([]);
   const [currentPdf, setCurrentPdf] = useState(null);
@@ -19,7 +19,7 @@ const PdfPreviewPage = () => {
       }
 
       try {
-        const response = await axios.post(`http://localhost:5000/api/userdata/get_pdf`, { userId });
+        const response = await axios.post(`${BASE_URL}/userdata/get_pdf`, { userId });
 
         if (response.data.success) {
           setPdfLinks(response.data.pdfs);
