@@ -134,12 +134,14 @@ const Template1 = ({ formData, experiences, education, skills }) => {
 
 
   const handlePaymentAndDownload = async () => {
+
+    
     // Get the Stripe object
     const stripe = await stripePromise;
   
     try {
       // Create a Checkout session by calling your backend
-      const response = await axios.post('http://localhost:5000/create-checkout-session', {
+      const response = await axios.post(`${BASE_URL}/create-checkout-session`, {
         headers: {
           'Content-Type': 'application/json',
         },
