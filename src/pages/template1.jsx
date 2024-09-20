@@ -494,10 +494,10 @@ const Template1 = ({ formData, experiences, education, skills }) => {
   
 
   return (
-    <div className="lg:w-full   lg:flex lg:flex-col items-center justify-start gap-4">
+    <div className="lg:w-full   lg:flex lg:flex-col items-center justify-start gap-4 overflow-hidden">
        <div className="w-full  w-[300px]  lg:w-[1200px] grid grid-cols-1 lg:grid-cols-12 px-6 lg:px-32">
         <div className="col-span-12 px-4 py-6">
-        <div className="flex flex-wrap items-center justify-end w-full gap-4 lg:gap-12 mb-4">
+        <div className="flex flex-wrap items-center justify-center w-full gap-4 lg:gap-12 mb-4">
   {/* Edit Button */}
   {/* <div
     className="flex items-center justify-center gap-1 px-3 py-1 rounded-md bg-gray-200 cursor-pointer"

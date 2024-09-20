@@ -100,7 +100,7 @@ const userid =localStorage.getItem("userId");
 
 
   return (
-    <div className="mt-20 lg:mt-0 w-full">
+    <div className="mt-20 lg:mt-0 overflow: 'hidden'">
       <Header />
       {/* Pass the formData, update methods, and state down as props */}
     

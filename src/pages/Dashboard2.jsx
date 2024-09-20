@@ -8,7 +8,7 @@ import PdfPreviewPage from "./pdf_preview";
 
 const Dashboard2 = () => {
 return (
-    <div>
+  <div className="mt-20 lg:mt-0 w-full overflow-hidden">
       <Header />
      
     
