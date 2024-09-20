@@ -44,6 +44,7 @@ function Header() {
   };
 
     const handleLogout = () => {
+      alert("yes");
       // Clear user ID from local storage
       localStorage.removeItem('userId');
       localStorage.removeItem('token');
@@ -106,7 +107,7 @@ function Header() {
             </div>
           </div>
           <button className="cursor-pointer bg-transparent text-blue-500 border-none" onClick={handleLogout}>
-          <RiLogoutCircleRFill/>
+          <RiLogoutCircleRFill size={30}/>
           </button>
         </div>
       </header>
@@ -174,8 +175,10 @@ function Header() {
           (+88) 1990 6886
         </div>
       </div>
-      <button className="cursor-pointer  border-none mb-4 text-blue-500" onClick={handleLogout}>
-      <RiLogoutCircleRFill/>
+   
+      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() => handleLogout()} >
+      <RiLogoutCircleRFill size={40} color="orange"/>
+        <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
     </div>
   </div>

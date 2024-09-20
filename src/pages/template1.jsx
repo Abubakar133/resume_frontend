@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import uploadImageToCloudinarypdf from '../Dashboard_components/uploadCloudinarypdf';
 import { toast } from "react-toastify";
-
+import stripePromise from "../Dashboard_components/stripeConfig";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
@@ -131,6 +131,37 @@ const Template1 = ({ formData, experiences, education, skills }) => {
         });
     }, 1000); // Delay to ensure clone is rendered
   };
+
+
+  const handlePaymentAndDownload = async () => {
+    // Get the Stripe object
+    const stripe = await stripePromise;
+  
+    try {
+      // Create a Checkout session by calling your backend
+      const response = await axios.post('http://localhost:5000/create-checkout-session', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      const session = response.data;
+  
+      // Redirect to Stripe Checkout
+      const { error } = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+  
+      if (error) {
+        console.error('Stripe Checkout Error:', error);
+      }
+    } catch (error) {
+      console.error('Error creating checkout session:', error);
+    }
+  };
+
+
+  
 
   const handleUploadPDF = async ( event) => {
     event.preventDefault();
@@ -342,7 +373,7 @@ const Template1 = ({ formData, experiences, education, skills }) => {
 
   const generatePDF = () => {
     //toggleVisibility();
-
+    handlePaymentAndDownload();
    toggle(true);
   
     // Wait for the browser to render the clone
@@ -499,9 +530,9 @@ const Template1 = ({ formData, experiences, education, skills }) => {
         <div className="col-span-12 px-4 py-6">
         <div className="flex flex-wrap items-center justify-center w-full gap-4 lg:gap-12 mb-4">
   {/* Edit Button */}
-  {/* <div
+  <div
     className="flex items-center justify-center gap-1 px-3 py-1 rounded-md bg-gray-200 cursor-pointer"
-    onClick={toggleEditable}
+    onClick={handlePaymentAndDownload}
   >
     {isEdit ? (
       <FaPenToSquare className="text-sm text-txtPrimary" />
@@ -509,9 +540,10 @@ const Template1 = ({ formData, experiences, education, skills }) => {
       <FaPencil className="text-sm text-txtPrimary" />
     )}
     <p className="text-sm text-txtPrimary">Edit</p>
-  </div> */}
+  </div> 
 
-  {/* Save Button */}
+  
+  
   <div
     className="flex items-center justify-center gap-1 px-3 py-1 rounded-md bg-gray-200 cursor-pointer"
     onClick={handleIconClick} // Handle div click to trigger file input
