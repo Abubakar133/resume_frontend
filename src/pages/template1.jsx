@@ -61,6 +61,8 @@ const Template1 = ({ formData, experiences, education, skills }) => {
   });
 
   useEffect(() => {
+
+    checkSubscriptionStatus();
     // Check the screen width once when the component is first rendered
     if (window.innerWidth <= 550) {
       toggle(false); // Call the toggle function with false if the width is less than or equal to 550px
@@ -135,13 +137,16 @@ const Template1 = ({ formData, experiences, education, skills }) => {
 
   const handlePaymentAndDownload = async () => {
 
-    
+    const userId = localStorage.getItem("userId");
+ 
     // Get the Stripe object
     const stripe = await stripePromise;
   
     try {
       // Create a Checkout session by calling your backend
       const response = await axios.post(`${BASE_URL}/create-checkout-session`, {
+        userId, // Send the userId directly
+      }, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -163,6 +168,35 @@ const Template1 = ({ formData, experiences, education, skills }) => {
   };
 
 
+  const [subscriptionUpdated, setSubscriptionUpdated] = useState(false);
+  const [remainingDays, setRemainingDays] = useState(null);
+  const checkSubscriptionStatus = async () => {
+    try {
+      const userId = localStorage.getItem("userId");
+      
+      const response = await axios.post(`${BASE_URL}/check-subscription`, {
+        userId, 
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (response.data.isActive) {
+        // Display remaining days to the user
+        setSubscriptionUpdated(true);
+        setRemainingDays(response.data.remainingDays);
+       
+      } else {
+        setSubscriptionUpdated(false);
+        setRemainingDays(null);
+       
+      }
+    } catch (error) {
+      console.error('Error checking subscription status:', error);
+    }
+  };
+  
   
 
   const handleUploadPDF = async ( event) => {
@@ -375,7 +409,7 @@ const Template1 = ({ formData, experiences, education, skills }) => {
 
   const generatePDF = () => {
     //toggleVisibility();
-    handlePaymentAndDownload();
+    if(subscriptionUpdated){
    toggle(true);
   
     // Wait for the browser to render the clone
@@ -432,7 +466,10 @@ const Template1 = ({ formData, experiences, education, skills }) => {
         });
         
     }, 2000); // Delay to ensure clone is rendered
-    
+  }
+  else {
+    toast.error("Please get a Subscription");
+  }
   };
   
 
@@ -532,8 +569,19 @@ const Template1 = ({ formData, experiences, education, skills }) => {
         <div className="col-span-12 px-4 py-6">
         <div className="flex flex-wrap items-center justify-center w-full gap-4 lg:gap-12 mb-4">
   {/* Edit Button */}
+
+ 
+            
+            
+            {remainingDays !== null && (
+              <div className="text-sm text-red-500 ">
+                You have {remainingDays} days left in your subscription.
+              </div>
+            )}
+       
+       {!subscriptionUpdated && (
   <div
-    className="flex items-center justify-center gap-1 px-3 py-1 rounded-md bg-gray-200 cursor-pointer"
+    className="flex items-center justify-center gap-1 px-3 py-1  rounded-md bg-red-200 cursor-pointer"
     onClick={handlePaymentAndDownload}
   >
     {isEdit ? (
@@ -541,9 +589,9 @@ const Template1 = ({ formData, experiences, education, skills }) => {
     ) : (
       <FaPencil className="text-sm text-txtPrimary" />
     )}
-    <p className="text-sm text-txtPrimary">Edit</p>
+    <p className="text-sm text-txtPrimary">Get Subcription</p>
   </div> 
-
+       )}
   
   
   <div

@@ -44,7 +44,7 @@ function Header() {
   };
 
     const handleLogout = () => {
-      alert("yes");
+     
       // Clear user ID from local storage
       localStorage.removeItem('userId');
       localStorage.removeItem('token');
