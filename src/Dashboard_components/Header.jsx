@@ -158,6 +158,11 @@ function Header() {
         <span className="relative z-10">CV Generator</span>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
+
+      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() =>navigate('/Dashboard2')}>
+        <span className="relative z-10">Dashboard</span>
+        <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
+      </button>
       
       <button className="cursor-pointer uppercase font-medium whitespace-nowrap bg-transparent border-none text-blue-500 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-transparent after:transition-all after:duration-300 focus:after:bg-blue-500 focus:after:h-[2px] mb-4">
         Are you an owner?
