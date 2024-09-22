@@ -81,7 +81,7 @@ function FOOTER() {
         href="mailto:support@houzing.com"
         className="block m-0 text-gray-600 hover:none"
       >
-        support@houzing.com
+        support@resume.com
       </a>
     </div>
   </div>
@@ -96,7 +96,7 @@ function FOOTER() {
                       <img className="w-5 h-5 cursor-pointer" src="/facebook.svg" alt="Facebook" />
                     </a>
                     <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                      <img className="w-5 h-5 cursor-pointer" src="/twitter.svg" alt="Twitter" />
+                      <img className="w-5 h-5 cursor-pointer" src="/twitter1.svg" alt="Twitter" />
                     </a>
                     <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                       <img className="w-5 h-5 cursor-pointer" src="/instagram.svg" alt="Instagram" />
