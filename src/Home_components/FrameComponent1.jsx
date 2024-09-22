@@ -40,7 +40,7 @@ const FrameComponent1 = () => {
           </div>
           <div className="flex justify-center py-4">
             <button className="cursor-pointer bg-[#ff5c00] w-[200px] sm:w-[250px] lg:w-[313.5px] rounded-full hover:bg-[#e64200]">
-              <b className="text-base sm:text-xl lg:text-2xl text-white">Try for free</b>
+              <b className="text-base sm:text-xl lg:text-2xl text-white"></b>
             </button>
           </div>
         </div>

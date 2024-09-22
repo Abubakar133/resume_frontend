@@ -18,11 +18,9 @@ const FrameComponent3 = ({ className = "" }) => {
           <div className="self-stretch text-[16px] md:text-[17px] leading-[24px] md:leading-[26.4px]">
             {`Future Resume is a product of FutureLabs — a global innovation & digital skill learning center. Future Resume was born of the need to create a new way for job-seekers to connect with recruiters. Hence, our best hands got to work with one thing in mind: to help you find a great job faster. We went even further to ensure that our Template designs meet Industry Standards and accepted by leading HR departments. With us, you can spin out an impressive resume that makes a memorable first impression!`}
           </div>
-          <div className="flex flex-row items-start justify-start py-0 px-2 md:px-8">
-            <button className="cursor-pointer border-none pt-[10.5px] px-[43px] pb-[10.3px] bg-[#ff5c00] rounded-[20.9px] flex items-center justify-center whitespace-nowrap hover:bg-[#e64200]">
-              <b className="text-[13.9px] font-[Quicksand] text-color-5 text-left">
-                Read More
-              </b>
+          <div className="flex justify-center py-4">
+            <button className="cursor-pointer bg-[#ff5c00] w-[200px] sm:w-[250px] lg:w-[313.5px] rounded-full hover:bg-[#e64200]">
+              <b className="text-base sm:text-xl lg:text-2xl text-white"></b>
             </button>
           </div>
         </div>

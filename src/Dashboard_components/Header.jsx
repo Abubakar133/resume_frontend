@@ -95,19 +95,20 @@ function Header() {
     </div>
         </div>
         <div className="w-[370px] flex flex-row items-center justify-between gap-5 max-w-full text-color-1">
-          <button className="cursor-pointer uppercase font-medium whitespace-nowrap bg-transparent border-none text-blue-500 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-transparent after:transition-all after:duration-300 focus:after:bg-blue-500 focus:after:h-[2px]">
-            Are you an owner?
-          </button>
+        <a href="tel:+8819906886" className="flex items-center">
           <div className=" flex flex-row items-center justify-start gap-2.5 text-color-1">
-            <a href="tel:+8819906886" className="flex items-center">
+            
             <IoIosCall />
-            </a>
+            
             <div className="relative uppercase font-medium inline-block min-w-[103px] text-blue-500 whitespace-nowrap z-[4]">
               (+88) 1990 6886
             </div>
           </div>
+          </a>
           <button className="cursor-pointer bg-transparent text-blue-500 border-none" onClick={handleLogout}>
+          
           <RiLogoutCircleRFill size={30}/>
+          <b className="flex items-center">Logout</b>
           </button>
         </div>
       </header>
@@ -164,23 +165,21 @@ function Header() {
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
       
-      <button className="cursor-pointer uppercase font-medium whitespace-nowrap bg-transparent border-none text-blue-500 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-transparent after:transition-all after:duration-300 focus:after:bg-blue-500 focus:after:h-[2px] mb-4">
-        Are you an owner?
-      </button>
+      <a href="tel:+8819906886" className="flex items-center">
       <div className="flex flex-row items-center justify-center gap-2.5 text-color-5 mb-4">
-        <a href="tel:+8819906886" className="flex items-center">
+       
           <img
             className="h-5 w-5 relative min-h-[20px] z-[4] cursor-pointer"
             loading="lazy"
             alt="Phone Icon"
             src="/vector-2.svg"
           />
-        </a>
+       
         <div className="relative uppercase font-medium inline-block min-w-[103px] text-blue-500  z-[4]">
           (+88) 1990 6886
         </div>
       </div>
-   
+      </a>
       <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() => handleLogout()} >
       <RiLogoutCircleRFill size={40} color="orange"/>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>

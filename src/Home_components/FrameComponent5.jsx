@@ -76,17 +76,23 @@ const FrameComponent5 = ({ className = "" }) => {
              
               <div className="flex-1 shadow-[0px_3.7px_3.7px_rgba(0,_0,_0,_0.25)] rounded-[7.5px] bg-color-5 overflow-hidden flex flex-col items-start justify-start pt-[13.9px] px-[13px] pb-[26px] box-border gap-[13.4px] max-w-full z-[3]">
                 <div className="flex flex-row items-start justify-start gap-[0.4px] mq450:flex-wrap">
-                  <div className="h-[82.2px] w-[82.2px] relative rounded-[50%] bg-[#d9d9d9] shrink-0" />
+                  
+                  
+                  <img
+                  className="h-[82.2px] w-[82.2px] relative rounded-[50%] bg-[#d9d9d9] shrink-0"
+                  loading="lazy"
+                  alt=""
+                  src="/ellipse-94@2x.png"
+                />
                   <div className="flex flex-col items-start justify-start pt-[13.9px] px-[0px] pb-[0px]">
-                    <b className="relative tracking-[0.01em] leading-[29.7px] shrink-0 mq450:text-lg mq450:leading-[24px]">
-                      <span>
-                        <span> Peter Ime</span>
-                      </span>
-                      <span className="text-[13.9px] text-[#ff5c00]">
-                        <span>{`, `}</span>
-                        <span>Web Developer</span>
-                      </span>
-                    </b>
+                  <div className="flex flex-col items-start justify-start gap-[3.4px] shrink-0">
+                  <b className="relative tracking-[0.01em] leading-[29.7px] mq450:text-[19px] mq450:leading-[24px]">
+                          Nsisong Akpakpan,
+                        </b>
+                        <b className="relative text-[13.9px] tracking-[0.01em] leading-[29.7px] text-[#ff5c00]">
+                          Web Developer
+                        </b>
+                        </div>
                   </div>
                 </div>
                 <div className="w-[400.4px] flex flex-row items-start justify-start py-[0px] px-[4px] box-border max-w-full text-[32.5px]">
@@ -123,7 +129,14 @@ const FrameComponent5 = ({ className = "" }) => {
                     ”
                   </b>
                   <div className="flex flex-row items-end justify-start gap-[7.5px] text-[23.2px] mq450:flex-wrap">
-                    <div className="h-[83.4px] w-[83.4px] relative rounded-[50%] bg-[#d9d9d9] shrink-0" />
+                  <img
+                  className="h-[82.2px] w-[82.2px] relative rounded-[50%] bg-[#d9d9d9] shrink-0"
+                  loading="lazy"
+                  alt=""
+                  src="/ellipse-94@2x.png"
+                />
+
+
                     <div className="flex flex-col items-start justify-end pt-[0px] px-[0px] pb-[4.2px]">
                       <div className="flex flex-col items-start justify-start gap-[3.4px] shrink-0">
                         <b className="relative tracking-[0.01em] leading-[29.7px] mq450:text-[19px] mq450:leading-[24px]">
