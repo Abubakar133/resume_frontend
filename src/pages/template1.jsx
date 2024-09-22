@@ -204,8 +204,12 @@ const Template1 = ({ formData, experiences, education, skills }) => {
     const file = event.target.files[0];
     if (!file) return;
 
-  
-   
+    if (file.type !== 'application/pdf') {
+    
+      toast.error("Please select a PDF file only.");
+      return;
+    }
+   else{
 
     const userId = localStorage.getItem("userId");
     
@@ -234,6 +238,8 @@ const Template1 = ({ formData, experiences, education, skills }) => {
         console.error("Error during PDF upload:", error);
         toast.error("Failed to upload PDF");
     }
+
+  }
 };
 
 
