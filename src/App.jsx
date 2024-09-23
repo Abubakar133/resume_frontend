@@ -10,6 +10,7 @@ import { Signup } from "./pages/Signup";
 import Dashboard1 from './pages/Dashboard';
 import Dashboard2 from './pages/Dashboard2';
 import Success from './Dashboard_components/success';
+import Home from './pages/BlogIframe'
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Desktop />} />
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/Dashboard" element={<Dashboard1 />} />
