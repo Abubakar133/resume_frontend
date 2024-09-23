@@ -480,6 +480,9 @@ const Template1 = ({ formData, experiences, education, skills }) => {
   
 
   const generateImage = (format) => {
+
+
+    if(subscriptionUpdated){
     toggle(true);
 
 
@@ -535,7 +538,7 @@ const Template1 = ({ formData, experiences, education, skills }) => {
       });
     }, 1000); // Delay to ensure clone is rendered
 
-
+  }
   
   };
 
