@@ -53,7 +53,7 @@ const PdfPreviewPage = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4">
         {pdfLinks.map((pdf, index) => (
-          <div key={index} className="border p-2 rounded shadow hover:shadow-lg transition-shadow duration-300 mx-2 my-4 sm:mx-0 sm:w-48">
+          <div key={index} className="border p-2 rounded shadow hover:shadow-lg transition-shadow duration-300 mx-2 my-4 sm:mx-0 sm:w-48 mr-5">
             <div
               className="relative w-full h-32 overflow-hidden cursor-pointer"
               onClick={() => setCurrentPdf(pdf.url)}
