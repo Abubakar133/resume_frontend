@@ -83,7 +83,7 @@ const ResumeBuilder = ({
       <Grid container spacing={3}>
         {/* Personal Information Section */}
         <Grid item xs={12}>
-          <Typography variant="h4" color="primary" sx={{ fontWeight: 600, marginBottom: 2 }}>Personal Information</Typography>
+          <Typography variant="h6" color="primary" sx={{ fontWeight: 600, marginBottom: 2 }}>Personal Information</Typography>
           <Divider sx={{ marginBottom: 2 }} />
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
@@ -135,7 +135,7 @@ const ResumeBuilder = ({
 
         {/* Contact Information Section */}
         <Grid item xs={12}>
-          <Typography variant="h4" color="primary" sx={{ fontWeight: 600, marginBottom: 2 }}>Contact Information</Typography>
+          <Typography variant="h6" color="primary" sx={{ fontWeight: 600, marginBottom: 2 }}>Contact Information</Typography>
           <Divider sx={{ marginBottom: 2 }} />
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
@@ -182,7 +182,7 @@ const ResumeBuilder = ({
         </Grid>
 
         <Grid item xs={12}>
-          <Typography variant="h4" color="primary" sx={{ fontWeight: 600, marginBottom: 2 }}>Refrence Information</Typography>
+          <Typography variant="h6" color="primary" sx={{ fontWeight: 600, marginBottom: 2 }}>Refrence Information</Typography>
           <Divider sx={{ marginBottom: 2 }} />
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
@@ -222,7 +222,7 @@ const ResumeBuilder = ({
 
         {/* Experience Section */}
         <Grid item xs={12}>
-          <Typography variant="h4" color="primary" sx={{ fontWeight: 600, marginBottom: 2 }}>Work History</Typography>
+          <Typography variant="h6" color="primary" sx={{ fontWeight: 600, marginBottom: 2 }}>Work History</Typography>
           <Divider sx={{ marginBottom: 2 }} />
           {experiences.map((experience, index) => (
             <Paper key={index} elevation={3} sx={{ padding: 2, marginBottom: 2 }}>
@@ -294,7 +294,7 @@ const ResumeBuilder = ({
 
         {/* Education Section */}
         <Grid item xs={12}>
-          <Typography variant="h4" color="primary" sx={{ fontWeight: 600, marginBottom: 2 }}>Education</Typography>
+          <Typography variant="h6" color="primary" sx={{ fontWeight: 600, marginBottom: 2 }}>Education</Typography>
           <Divider sx={{ marginBottom: 2 }} />
           {education.map((edu, index) => (
             <Paper key={index} elevation={3} sx={{ padding: 2, marginBottom: 2 }}>
@@ -344,7 +344,7 @@ const ResumeBuilder = ({
 
         {/* Skills Section */}
 <Grid item xs={12}>
-  <Typography variant="h5" color="primary" sx={{ fontWeight: 600, marginBottom: 1 }}>
+  <Typography variant="h6" color="primary" sx={{ fontWeight: 600, marginBottom: 1 }}>
     Skills
   </Typography>
   <Divider sx={{ marginBottom: 1 }} />
@@ -404,7 +404,7 @@ const ResumeBuilder = ({
 {/* Language Section */}
 {/* Language Section */}
 <Grid item xs={12}>
-  <Typography variant="h5" color="primary" sx={{ fontWeight: 600, marginBottom: 1 }}>
+  <Typography variant="h6" color="primary" sx={{ fontWeight: 600, marginBottom: 1 }}>
     Languages
   </Typography>
   <Divider sx={{ marginBottom: 1 }} />
