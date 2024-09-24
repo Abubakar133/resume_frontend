@@ -30,7 +30,7 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { FadeInOutWIthOpacity, opacityINOut } from "./animation";
 
-const Template1 = ({ formData, experiences, education, skills }) => {
+const Template1 = ({ formData, experiences, education, skills,Languages }) => {
   const { pathname } = useLocation();
   const location = useLocation();
   const navigate = useNavigate();
@@ -336,6 +336,15 @@ const Template1 = ({ formData, experiences, education, skills }) => {
     setSkills(updatedSkills);
   };
 
+  const handleLanguageChange = (index, e) => {
+    const { name, value } = e.target;
+    const updatedSkills = [...skills];
+    updatedSkills[index][name] = value;
+    setSkills(updatedSkills);
+  };
+
+
+
   const removeSkill = (index) => {
     const updatedSkills = [...skills];
     updatedSkills.splice(index, 1);
@@ -442,11 +451,12 @@ const Template1 = ({ formData, experiences, education, skills }) => {
     clone.style.height = '297mm'; // A4 height
     clone.style.overflow = 'visible'; // Prevent overflow
     clone.style.backgroundColor = 'white'; // Ensure background color is white for visibility
-  
+    const calculatedHeight = clone.scrollHeight;
+    
     // Add padding/margins to ensure content doesn't clip
     clone.style.padding = '0'; // Remove any padding/margins that could cause misalignment
     clone.style.margin = '0';
-      domtoimage.toPng(clone, { quality: 1,scale: 5, width: 830, height: 1200 }) 
+      domtoimage.toPng(clone, { quality: 1,scale: 5, width: 830, height:calculatedHeight }) 
         .then((dataUrl) => {
           const pdf = new jsPDF({
             unit: 'mm',
@@ -784,6 +794,16 @@ const Template1 = ({ formData, experiences, education, skills }) => {
                         isEdit && "bg-[#1c1c1c]"
                       }`}
                     />
+                    <input
+                      value={formData.refemail}
+                      onChange={handleChange}
+                      name="refemail"
+                      type="email"
+                      readOnly="true"
+                      className={`bg-transparent outline-none border-none text-xs capitalize text-gray-300 w-full ${
+                        isEdit && "bg-[#1c1c1c]"
+                      }`}
+                    />
                   </div>
                 </div>
               </div>
@@ -1057,7 +1077,6 @@ const Template1 = ({ formData, experiences, education, skills }) => {
 
 
 
-
                 {/* skills */}
                 <div className="w-full">
                   <p className="uppercase text-xl tracking-wider">Skills</p>
@@ -1076,7 +1095,7 @@ const Template1 = ({ formData, experiences, education, skills }) => {
                               <div className="flex items-center justify-center">
                                 <input
                                   value={skill.title}
-                                  onChange={(e) => handleSkillsChange(i, e)}
+                                 
                                   name="title"
                                   type="text"
                                   readOnly="true"
@@ -1090,7 +1109,7 @@ const Template1 = ({ formData, experiences, education, skills }) => {
                                     <motion.input
                                       {...FadeInOutWIthOpacity}
                                       value={skill.percentage}
-                                      onChange={(e) => handleSkillsChange(i, e)}
+                                      
                                       name="percentage"
                                       type="text"
                                       className={` outline-none border-none text-base tracking-wide capitalize font-semibold text-txtPrimary w-full ${
@@ -1142,6 +1161,49 @@ const Template1 = ({ formData, experiences, education, skills }) => {
                     )}
                   </AnimatePresence>
                 </div>
+
+
+
+
+{/* Languages Section */}
+<div className="w-full">
+  <p className="uppercase text-xl tracking-wider">Languages</p>
+  <div className="w-full h-1 bg-yellow-900 my-3"></div>
+  <div className="w-full flex flex-wrap items-center justify-start gap-4">
+    <AnimatePresence>
+      {Languages &&
+        Languages.map((Language, i) => (
+          <motion.div
+            key={i}
+            {...opacityINOut(i)}
+            className="flex-1"
+            style={{ minWidth: 225 }}
+          >
+            <div className="w-full flex items-center justify-between">
+              <div className="flex items-center justify-center">
+                <input
+                  value={Language.title}
+                 
+                  name="title"
+                  type="text"
+                  readOnly={true}
+                  className={`outline-none border-none text-base tracking-wide capitalize font-semibold text-txtPrimary w-full ${
+                    isEdit ? "bg-gray-200" : "bg-transparent"
+                  }`}
+                />
+              </div>
+
+             
+            </div>
+          </motion.div>
+        ))}
+    </AnimatePresence>
+  </div>
+</div>
+
+
+
+
 
 
 

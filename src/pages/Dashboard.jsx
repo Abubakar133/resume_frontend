@@ -14,73 +14,75 @@ const Dashboard1 = () => {
 const userid =localStorage.getItem("userId");
 
   const [formData, setFormData] = useState({
-    fullname: "Abubakar mehboob",
-    professionalTitle: "Professional Title",
-    personalDescription: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alia minus est culpa id corrupti nobis ullam harum, porro veniam facilis, obcaecati nulla magnam beatae quae at eos! Qui, similique laboriosam?`,
-    refererName: "Sara Taylore",
-    refererRole: "Director | Company Name",
-    mobile: "+91 0000-0000",
-    email: "urname@gmail.com",
-    website: "urwebsite.com",
-    address: "your street address, ss, street, city/zip code - 1234",
+    // fullname: "Abubakar mehboob",
+    // professionalTitle: "Professional Title",
+    // personalDescription: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alia minus est culpa id corrupti nobis ullam harum, porro veniam facilis, obcaecati nulla magnam beatae quae at eos! Qui, similique laboriosam?`,
+    // refererName: "Sara Taylore",
+    // refererRole: "Director | Company Name",
+    // mobile: "+91 0000-0000",
+    // email: "urname@gmail.com",
+    // website: "urwebsite.com",
+    // address: "your street address, ss, street, city/zip code - 1234",
   });
 
   const [experiences, setExperiences] = useState([
     {
       year: "2012 - 2014",
       title: "Job Position Here",
-      companyAndLocation: "Company Name / Location here",
+      companyAndLocation: "Company Name | Location here",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis voluptatibus minima tenetur nostrum quo aliquam dolorum incidunt.",
     },
-    {
-      year: "2012 - 2014",
-      title: "Job Position Here",
-      companyAndLocation: "Company Name / Location here",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis voluptatibus minima tenetur nostrum quo aliquam dolorum incidunt.",
-    },
-    {
-      year: "2012 - 2014",
-      title: "Job Position Here",
-      companyAndLocation: "Company Name / Location here",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis voluptatibus minima tenetur nostrum quo aliquam dolorum incidunt.",
-    },
+    
   ]);
 
   const [education, setEducation] = useState([
     {
       major: "ENTER YOUR MAJOR",
-      university: "Name of your university / college 2005-2009",
+      university: "Name of your university | 2005-2009",
     },
-    {
-      major: "ENTER YOUR MAJOR 2",
-      university: "Name of your university / college 2005-2009",
-    },
+    
   ]);
 
   const [skills, setSkills] = useState([
     {
-      title: "skill11",
+      title: "Microsoft",
       percentage: "75",
     },
     {
-      title: "skill12",
+      title: "Google workspace",
       percentage: "75",
     },
     {
-      title: "skill13",
+      title: "Excel",
       percentage: "75",
     },
     {
-      title: "skill14",
+      title: "CRM",
       percentage: "75",
     },
     {
-      title: "skill15",
+      title: "Image editing program",
       percentage: "75",
     },
+    {
+      title: "Word",
+      percentage: "75",
+    },
+  ]);
+ 
+  
+
+  const [Language, setLang] = useState([
+    // {
+    //   title: "English",
+     
+    // },
+    // {
+    //   title: "Urdu",
+      
+    // },
+   
   ]);
 
 
@@ -98,6 +100,7 @@ const userid =localStorage.getItem("userId");
 
   const translatedSkills = skills.map(skill => t(skill)); // Translate skills dynamically
 
+  const translatedLanguage = Language.map(Language => t(Language));
 
   return (
     <div className="mt-20 lg:mt-0 w-full overflow-hidden">
@@ -116,6 +119,8 @@ const userid =localStorage.getItem("userId");
         setEducation={setEducation}
         skills={skills}
         setSkills={setSkills}
+        setLanguage={setLang}
+        Languages={Language}
       />
     
       
@@ -125,7 +130,7 @@ const userid =localStorage.getItem("userId");
           experiences={translatedExperiences} // Use translated data
           education={translatedEducation} // Use translated data
           skills={translatedSkills} // Use translated data
-          
+          Languages={translatedLanguage} 
         />
     
      
