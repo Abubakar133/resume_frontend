@@ -76,11 +76,11 @@ function Header() {
       <div className="flex-1 flex flex-row items-center justify-end max-w-full">
       {/* Buttons with hover and active state */}
       {[
-        { text: 'Home', path: '/' },
-        { text: 'About Us', path: '/' },
-        { text: 'Contact', path: '/' },
+        { text: 'Heim', path: '/' },
+        { text: 'Um okkur', path: '/' },
+        { text: 'Hafðu samband', path: '/' },
         { text: 'Cv Generator', path: '/Dashboard' },
-        { text: 'Dashboard', path: '/Dashboard2' },
+        { text: 'Mælaborð', path: '/Dashboard2' },
       ].map((item, index) => (
         <button
           key={index}
@@ -100,20 +100,16 @@ function Header() {
     </div>
         </div>
         <div className="w-[370px] flex flex-row items-center justify-between gap-5 max-w-full text-color-1">
-        <a href="tel:+8819906886" className="flex items-center">
+        <a  className="flex items-center">
           <div className=" flex flex-row items-center justify-start gap-2.5 text-color-1">
             
-            <IoIosCall />
-            
-            <div className="relative uppercase font-medium inline-block min-w-[103px] text-blue-500 whitespace-nowrap z-[4]">
-              (+88) 1990 6886
-            </div>
+          
           </div>
           </a>
           <button className="cursor-pointer bg-transparent text-blue-500 border-none" onClick={handleLogout}>
           
           <RiLogoutCircleRFill size={30}/>
-          <b className="flex items-center">Logout</b>
+          <b className="flex items-center">Útskrá</b>
           </button>
         </div>
       </header>
@@ -146,16 +142,16 @@ function Header() {
     )}
     <div className="flex flex-col items-center justify-center h-full text-white">
       <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group"  onClick={() => navigate('/')}>
-        <span className="relative z-10"  >Home</span>
+        <span className="relative z-10"  >Heim</span>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
 
       <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() => navigate('/')}>
-        <span className="relative z-10" >About Us</span>
+        <span className="relative z-10" >Um okkur</span>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
       <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() => navigate('/')}>
-        <span className="relative z-10">Contact</span>
+        <span className="relative z-10">Hafðu samband</span>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
 
@@ -165,27 +161,13 @@ function Header() {
       </button>
 
       <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() =>navigate('/Dashboard2')}>
-        <span className="relative z-10">Dashboard</span>
+        <span className="relative z-10">Mælaborð</span>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
       
-      <a href="tel:+8819906886" className="flex items-center">
-      <div className="flex flex-row items-center justify-center gap-2.5 text-color-5 mb-4">
-       
-          <img
-            className="h-5 w-5 relative min-h-[20px] z-[4] cursor-pointer"
-            loading="lazy"
-            alt="Phone Icon"
-            src="/vector-2.svg"
-          />
-       
-        <div className="relative uppercase font-medium inline-block min-w-[103px] text-blue-500  z-[4]">
-          (+88) 1990 6886
-        </div>
-      </div>
-      </a>
+     
       <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() => handleLogout()} >
-      <RiLogoutCircleRFill size={40} color="orange"/>
+      <RiLogoutCircleRFill size={40} color="#688bf2"/>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
     </div>

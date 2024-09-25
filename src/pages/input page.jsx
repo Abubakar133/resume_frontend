@@ -453,11 +453,19 @@ const ResumeBuilder = ({
                 <Grid item xs={12}>
                   <Button
                     variant="contained"
-                    color="error"
+                   
                     startIcon={<FaTrash />}
                     onClick={() => removeExperience(index)}
+                    sx={{
+                     
+                      backgroundColor: '#FFC1C3',
+                      color: '#000',
+                      '&:hover': {
+                        backgroundColor: '#FFC1C3', // Same background color to disable hover effect
+                      },
+                    }}
                   >
-                    Remove
+                   
                   </Button>
                 </Grid>
               </Grid>
@@ -465,9 +473,10 @@ const ResumeBuilder = ({
           ))}
           <Button
             variant="contained"
-            color="success"
+           
             startIcon={<FaPlus />}
             onClick={addExperience}
+            sx={{ marginTop: 1, backgroundColor: '#DCDCDC', color: '#000' }} 
           >
             Add Experience
           </Button>
@@ -509,11 +518,19 @@ const ResumeBuilder = ({
                 <Grid item xs={12}>
                   <Button
                     variant="contained"
-                    color="error"
+                   
                     startIcon={<FaTrash />}
                     onClick={() => removeEducation(index)}
+                    sx={{
+                     
+                      backgroundColor: '#FFC1C3',
+                      color: '#000',
+                      '&:hover': {
+                        backgroundColor: '#FFC1C3', // Same background color to disable hover effect
+                      },
+                    }}
                   >
-                    Remove
+                   
                   </Button>
                 </Grid>
               </Grid>
@@ -521,9 +538,10 @@ const ResumeBuilder = ({
           ))}
           <Button
             variant="contained"
-            color="success"
+            
             startIcon={<FaPlus />}
             onClick={addEducation}
+            sx={{ marginTop: 1, backgroundColor: '#DCDCDC', color: '#000' }} 
           >
             Add Education
           </Button>
@@ -563,12 +581,21 @@ const ResumeBuilder = ({
         <Grid item xs={12} sm={2}>
           <Button
             variant="contained"
-            color="error"
+            
             startIcon={<FaTrash />}
             onClick={() => removeSkill(index)}
             size="small"
+            sx={{
+              marginTop: 1,
+              backgroundColor: '#FFC1C3',
+              color: '#000',
+              '&:hover': {
+                backgroundColor: '#FFC1C3', // Same background color to disable hover effect
+              },
+            }}
+        
           >
-            Remove
+            
           </Button>
         </Grid>
       </Grid>
@@ -576,11 +603,11 @@ const ResumeBuilder = ({
   ))}
   <Button
     variant="contained"
-    color="success"
+   
     startIcon={<FaPlus />}
     onClick={addSkill}
     size="small"
-    sx={{ marginTop: 1 }}
+    sx={{ marginTop: 1, backgroundColor: '#DCDCDC', color: '#000' }} 
   >
     Add Skill
   </Button>
@@ -589,7 +616,7 @@ const ResumeBuilder = ({
 
 <Grid item xs={12}>
   <Typography variant="h6" color="primary" sx={{ fontWeight: 600, marginBottom: 2 }}>
-    Languages
+    Languages - Tungumál
   </Typography>
   <Divider sx={{ marginBottom: 2 }} />
   <Grid container spacing={3}>
@@ -609,15 +636,15 @@ const ResumeBuilder = ({
     
       </Grid>
       <Button
-          variant="contained"
-          color="success"
-          startIcon={<FaPlus />}
-          onClick={addLang}
-          size="small"
-          sx={{ marginTop: 1 }}
-        >
-          Add Language
-        </Button>
+  variant="contained"
+  startIcon={<FaPlus />}
+  onClick={addLang}
+  size="small"
+  sx={{ marginTop: 1, backgroundColor: '#DCDCDC', color: '#000' }} // Custom background and text color
+>
+  Add Language
+</Button>
+
       {/* Conditionally render the input field */}
       {isAddingLanguage && (
   <Grid container spacing={1} sx={{ marginTop: 2 }}>
