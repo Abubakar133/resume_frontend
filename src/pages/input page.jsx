@@ -90,13 +90,14 @@ const ResumeBuilder = ({
   
   
   
-
   const addExperience = () => {
-    setExperiences([...experiences, { year: "", title: "", company: "", description: "" }]);
+    // Add the new experience at the top of the array
+    setExperiences([{ year: "", title: "", company: "", description: "" }, ...experiences]);
   };
+  
 
   const addEducation = () => {
-    setEducation([...education, { major: "", university: "" }]);
+    setEducation([ { major: "", university: "" },...education]);
   };
 
   const addSkill = () => {

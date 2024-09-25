@@ -517,7 +517,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
     clone.style.height = '297mm'; // A4 height
     clone.style.overflow = 'visible';
     clone.style.backgroundColor = 'white';
-
+    const calculatedHeight = clone.scrollHeight;
     // Remove padding and margins
     clone.style.padding = '0';
     clone.style.margin = '0';
@@ -525,7 +525,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
       domtoimage.toPng(clone, {
         quality: 1,
         scale: 5, // Use a high scale for better resolution
-        width: 830, height: 1200,
+        width: 830, height: calculatedHeight,
       })
       .then((dataUrl) => {
         if (format === 'png') {
@@ -549,7 +549,9 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
     }, 1000); // Delay to ensure clone is rendered
 
   }
-  
+  else {
+    toast.error("Please get a Subscription");
+  }
   };
 
   // Function to download the image
