@@ -47,7 +47,7 @@ const PdfPreviewPage = () => {
       {error && <div className="text-red-500 mb-4">{error}</div>}
       {loading && <div>Loading PDFs...</div>}
 
-      <h2 className="text-2xl font-bold mt-6 mb-4 text-blue-600">Your Saved CVs:</h2>
+      
 
 
 
