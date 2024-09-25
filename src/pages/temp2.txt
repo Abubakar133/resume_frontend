@@ -477,8 +477,8 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
             }
         })
         .catch((error) => {
-          console.error('Error generating PDF1:', error);
-          toast.error("Please Select the Image");
+          console.error('Error generating PDF:', error);
+          toast.error("Failed to generate PDF");
         });
         
     }, 2000); // Delay to ensure clone is rendered
@@ -544,7 +544,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
       })
       .catch((error) => {
         console.error('Error generating image:', error);
-        toast.error("Please Select the Image");
+        toast.error("Failed to generate image");
       });
     }, 1000); // Delay to ensure clone is rendered
 
@@ -594,8 +594,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
             
             {remainingDays !== null && (
               <div className="text-sm text-red-500 ">
-               
-                Þú átt {remainingDays} daga eftir af áskriftinni þinni.
+                You have {remainingDays} days left in your subscription.
               </div>
             )}
        
@@ -609,7 +608,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
     ) : (
       <FaPencil className="text-sm text-txtPrimary" />
     )}
-    <p className="text-sm text-txtPrimary">Fáðu áskrift</p>
+    <p className="text-sm text-txtPrimary">Get Subcription</p>
   </div> 
        )}
   
@@ -619,7 +618,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
     onClick={handleIconClick} // Handle div click to trigger file input
   >
     <BiSolidBookmarks className="text-sm text-txtPrimary" />
-    <p className="text-sm text-txtPrimary">hlaða upp í ský</p>
+    <p className="text-sm text-txtPrimary">Save</p>
 
     {/* Hidden file input for selecting PDF files */}
     <input
@@ -633,7 +632,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
 
   {/* Download Section */}
   <div className="flex flex-wrap items-center justify-center gap-2">
-    <p className="text-sm text-txtPrimary">Sækja : </p>
+    <p className="text-sm text-txtPrimary">Download : </p>
     <BsFiletypePdf
       className="text-xl md:text-2xl text-txtPrimary cursor-pointer"
       onClick={generatePDF}
@@ -707,7 +706,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
 
                 <div className="w-full">
                   <p className="uppercase text-lg font-semibold text-gray-300 ml-4">
-                  Menntun
+                    Education
                   </p>
                   <div className="w-full h-[2px] bg-yellow-400"></div>
                     {education &&
@@ -771,7 +770,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                   )}
                 <div className="w-full">
                   <p className="bg-transparent uppercase text-lg font-semibold text-gray-300 ml-4">
-                  Tilvísun
+                    Reference
                   </p>
                   <div className="w-full h-[2px] bg-yellow-400 mt-2"></div>
                   <div className="w-full pl-4 mt-3">
@@ -818,7 +817,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                   <div className="col-span-8">
                     <div className="w-full h-6 bg-[rgba(45,45,45,0.6)] px-3 flex items-center">
                       <p className="text-sm font-semibold text-gray-300">
-                      Sími
+                        Phone
                       </p>
                     </div>
                     <input
@@ -838,7 +837,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                   <div className="col-span-8">
                     <div className="w-full h-6 bg-[rgba(45,45,45,0.6)] px-3 flex items-center">
                       <p className="text-sm font-semibold text-gray-300">
-                      Netfang
+                        Email
                       </p>
                     </div>
                     <input
@@ -858,7 +857,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                   <div className="col-span-8">
                     <div className="w-full h-6 bg-[rgba(45,45,45,0.6)] px-3 flex items-center">
                       <p className="text-sm font-semibold text-gray-300">
-                      Vefsíða
+                        Website
                       </p>
                     </div>
 
@@ -879,7 +878,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                   <div className="col-span-8">
                     <div className="w-full h-6 bg-[rgba(45,45,45,0.6)] px-3 flex items-center">
                       <p className="text-sm font-semibold text-gray-300">
-                      Heimilisfang
+                        Address
                       </p>
                     </div>
                     <textarea
@@ -959,7 +958,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                
                
                 <div className="w-full">
-                  <p className="uppercase text-xl tracking-wider">Um mig</p>
+                  <p className="uppercase text-xl tracking-wider">About Me</p>
                   <div className="w-full h-1 bg-yellow-900 my-3"></div>
                   <textarea
                     readOnly="true"
@@ -985,7 +984,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
 
                 <div className="w-full">
                   <p className="uppercase text-xl tracking-wider">
-                  Starfsreynsla
+                    Work Experience
                   </p>
                   <div className="w-full h-1 bg-yellow-900 my-3"></div>
                   <div className="w-full flex flex-col items-center justify-start gap-4">
@@ -1080,7 +1079,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
 
                 {/* skills */}
                 <div className="w-full">
-                  <p className="uppercase text-xl tracking-wider">Færni</p>
+                  <p className="uppercase text-xl tracking-wider">Skills</p>
                   <div className="w-full h-1 bg-yellow-900 my-3"></div>
                   <div className="w-full flex flex-wrap items-center justify-start gap-4">
                     <AnimatePresence>
@@ -1168,7 +1167,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
 
 {/* Languages Section */}
 <div className="w-full">
-  <p className="uppercase text-xl tracking-wider">Tungumál</p>
+  <p className="uppercase text-xl tracking-wider">Languages</p>
   <div className="w-full h-1 bg-yellow-900 my-3"></div>
   <div className="w-full flex flex-wrap items-center justify-start gap-4">
     <AnimatePresence>
