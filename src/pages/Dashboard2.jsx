@@ -8,16 +8,16 @@ import PdfPreviewPage from "./pdf_preview";
 
 const Dashboard2 = () => {
 return (
-  <div className="mt-20 lg:mt-0 w-full overflow-hidden">
-      <Header />
-     
-    
-      <PdfPreviewPage/>
-    
+<div className="flex flex-col min-h-screen w-full overflow-hidden">
+  <Header />
 
-     
-      <Footer />
-    </div>
+  <div className="flex-grow">
+    <PdfPreviewPage />
+  </div>
+
+  <Footer />
+</div>
+
   );
 };
 

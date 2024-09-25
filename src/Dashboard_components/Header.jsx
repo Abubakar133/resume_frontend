@@ -57,17 +57,22 @@ function Header() {
     <>
       <header className="hidden lg:flex w-[1300px] mx-4 lg:mx-6 flex flex-row bg-transparent border-none items-center justify-between sticky top-0 z-50 gap-5 bg-color-5 text-smi text-color-5 font-bold1">
         <div className="w-[561px] flex flex-row items-center justify-start gap-9 max-w-full mq825:gap-[18px]">
-        <div className="flex flex-row items-start justify-start relative">
-      <div className="absolute top-0 right-[-50px] text-orange-500 sm:right-[-100px] md:right-[-150px] lg:right-[-200px] tracking-[0.01em] leading-[22.3px] capitalize font-semibold text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px]">
-    FutureResume
-  </div>
-        <img
-          className="h-[73px] w-[102.3px] relative object-cover z-[1]"
-          loading="lazy"
-          alt=""
-          src="/resume-logoremovebgpreview-2@2x.png"
-        />
-      </div>
+        
+
+        
+  <a >
+    <img
+      fetchpriority="high"
+      width="200"
+      height="100"
+      src="https://easycv.is/wp-content/uploads/2024/09/logoslogangif.gif"
+      alt="Logo"
+      className="object-contain"
+    />
+  </a>
+
+
+
       <div className="flex-1 flex flex-row items-center justify-end max-w-full">
       {/* Buttons with hover and active state */}
       {[
@@ -115,17 +120,16 @@ function Header() {
      {/* Mobile Header */}
 <header className="lg:hidden fixed top-0 left-0 w-full bg-transparent border-none z-50 ">
   <div className="flex items-center justify-between p-4">
-  <div className="flex flex-row items-start justify-start relative">
-      <div className="absolute top-0 right-[-50px] text-orange-500 sm:right-[-100px] md:right-[-150px] lg:right-[-200px] tracking-[0.01em] leading-[22.3px] capitalize font-semibold text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px]">
-    FutureResume
-  </div>
-        <img
-          className="h-[73px] w-[102.3px] relative object-cover z-[1]"
-          loading="lazy"
-          alt=""
-          src="/resume-logoremovebgpreview-2@2x.png"
-        />
-      </div>
+  <a >
+    <img
+      fetchpriority="high"
+      width="200"
+      height="100"
+      src="https://easycv.is/wp-content/uploads/2024/09/logoslogangif.gif"
+      alt="Logo"
+      className="object-contain"
+    />
+  </a>
     <button className="text-black bg-transparent" onClick={toggleSidebar}>
       <BiMenu className="w-6 h-6" />
     </button>

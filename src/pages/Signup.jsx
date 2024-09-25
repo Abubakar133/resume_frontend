@@ -77,18 +77,16 @@ export const Signup = () => {
     <section style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: '10px' }}>
       <main style={{ width: '100%', maxWidth: '400px', backgroundColor: '#f9f9f9', padding: '20px', borderRadius: '10px', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)' }}>
         <div style={{ textAlign: 'center' }}>
-          <img 
-            id="reg-logo" 
-            src="/resume-logoremovebgpreview-2@2x.png" 
-            alt="Signup Image" 
-            style={{ 
-              width: '100%', 
-              maxWidth: '200px', 
-              marginBottom: '20px', 
-              height: 'auto', 
-              maxHeight: '100px' // Ensures the image doesn't overflow on small screens
-            }} 
-          />
+        <a >
+    <img
+      fetchpriority="high"
+      width="200"
+      height="100"
+      src="https://easycv.is/wp-content/uploads/2024/09/logoslogangif.gif"
+      alt="Logo"
+      className="object-contain"
+    />
+  </a>
         </div>
         <div>
           <h1 style={{ fontSize: '24px', fontWeight: '600', marginBottom: '20px', textAlign: 'center' }}>Sign Up</h1>
