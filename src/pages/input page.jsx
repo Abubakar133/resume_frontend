@@ -156,7 +156,7 @@ const ResumeBuilder = ({
     <Box
     sx={{
       backgroundColor: "#468cb8", // Background color for the header
-      padding: 3, // Padding inside the header box
+      padding: { xs: 0, md: 3 }, // Padding inside the header box
       borderRadius: "16px 16px 0 0", // Rounded corners
       display: "flex", // Flexbox for centering
       justifyContent: "center", // Center the content horizontally
