@@ -97,7 +97,7 @@ export const Forget = () => {
 
               {/* Password TextField */}
               <TextField
-                label="New Password - Lykilorð"
+                label="New Password - Nýtt lykilorð"
                 name="password"
                 type="password"
                 value={user.password}
@@ -106,7 +106,7 @@ export const Forget = () => {
                 variant="outlined"
                 size="small"
                 required
-                placeholder="Password"
+                placeholder="ew Password"
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     borderRadius: '8px',
@@ -126,9 +126,16 @@ export const Forget = () => {
 
               {/* Login Button */}
               <Button variant="contained" type="submit" style={{ width: '100%', marginTop: '20px', backgroundColor: '#688bf2', color: '#fff' }}>
-              Reset Password
+              Endurstilla lykilorð
               </Button>
 
+              <Button
+                variant="contained"
+                style={{ width: '100%', marginTop: '10px', backgroundColor: '#688bf2', color: '#fff' }}
+                onClick={() => navigate("/login")}
+              >
+                Innskráning
+              </Button>
               {/* SignUp Button */}
              
             </Box>

@@ -554,9 +554,15 @@ const ResumeBuilder = ({
   Computer skills - Tölvu & tæknikunnátta
   </Typography>
   <Divider sx={{ marginBottom: 1 }} />
+  <Typography variant="h7" color="red" sx={{  marginBottom: 2 }}>
+  Sláðu inn færni þína með einkunn þinni á milli 1-100
+  </Typography>
   {skills.map((skill, index) => (
+    
     <Paper key={index} elevation={3} sx={{ padding: 1, marginBottom: 1 }}>
+      
       <Grid container spacing={1}>
+        
         <Grid item xs={12} sm={5}>
           <TextField
             fullWidth
@@ -575,7 +581,7 @@ const ResumeBuilder = ({
             name="percentage"
             value={skill.percentage}
             onChange={(e) => handleSkillChange(index, e)}
-            placeholder="Proficiency (%)"
+            placeholder="Proficiency - Hæfni (%)"
             size="small"
           />
         </Grid>
