@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { TextField, Box, Button, Typography } from "@mui/material";
+import { TextField, Box, Button } from "@mui/material";
 import { BASE_URL } from "../config";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import HelpIcon from "@mui/icons-material/Help";
 
-export const Login = () => {
+export const Forget = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({ email: "", password: "" });
 
@@ -20,7 +19,7 @@ export const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${BASE_URL}/auth/login`,
+        `${BASE_URL}/auth/forget`,
         user,
         {
           headers: { "Content-Type": "application/json" },
@@ -28,11 +27,9 @@ export const Login = () => {
       );
       if (response.status === 200) {
         toast.success("Login Successful");
-        localStorage.setItem("userId", response.data.userId);
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("username", response.data.username);
+        
         setUser({ email: "", password: "" });
-        navigate("/Dashboard2");
+       
       } else {
         toast.error(response.data.message || "Invalid Credentials");
       }
@@ -57,7 +54,7 @@ export const Login = () => {
           </a>
         </div>
         <div>
-          <h1 style={{ fontSize: '24px', fontWeight: '600', marginBottom: '20px', textAlign: 'center' }}>Sign In</h1>
+          <h1 style={{ fontSize: '24px', fontWeight: '600', marginBottom: '20px', textAlign: 'center' }}>Forget Password</h1>
           <form onSubmit={handleSubmit}>
             <Box
               sx={{
@@ -100,7 +97,7 @@ export const Login = () => {
 
               {/* Password TextField */}
               <TextField
-                label="Password - Lykilorð"
+                label="New Password - Lykilorð"
                 name="password"
                 type="password"
                 value={user.password}
@@ -129,36 +126,11 @@ export const Login = () => {
 
               {/* Login Button */}
               <Button variant="contained" type="submit" style={{ width: '100%', marginTop: '20px', backgroundColor: '#688bf2', color: '#fff' }}>
-              Innskráning
+              Reset Password
               </Button>
 
               {/* SignUp Button */}
-              <Button
-                variant="contained"
-                style={{ width: '100%', marginTop: '10px', backgroundColor: '#688bf2', color: '#fff' }}
-                onClick={() => navigate("/signup")}
-              >
-                Skráning
-              </Button>
-              <Box
-  sx={{
-    marginTop: '20px',
-    cursor: 'pointer',
-    textAlign: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: '#0b78f7',
-  }}
-  onClick={() => navigate("/forget")}
->
-  <HelpIcon sx={{ fontSize: '18px', marginRight: '5px' }} />
-  <Typography variant="body2" sx={{ color: '#0b78f7' }}>
-    Forget Password
-  </Typography>
-</Box>
-
-
+             
             </Box>
           </form>
         </div>

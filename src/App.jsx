@@ -11,6 +11,7 @@ import Dashboard1 from './pages/Dashboard';
 import Dashboard2 from './pages/Dashboard2';
 import Success from './Dashboard_components/success';
 import Home from './pages/BlogIframe'
+import {Forget} from './pages/forgetpassword'
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
       <Route path="/Dashboard" element={<Dashboard1 />} />
       <Route path="/Dashboard2" element={<Dashboard2 />} />
       <Route path="/Success" element={<Success />} />
+      <Route path="/forget" element={<Forget />} />
+
 
      
     </Routes>
