@@ -57,7 +57,7 @@ export const Login = () => {
           </a>
         </div>
         <div>
-          <h1 style={{ fontSize: '24px', fontWeight: '600', marginBottom: '20px', textAlign: 'center' }}>Sign In</h1>
+          <h1 style={{ fontSize: '24px', fontWeight: '600', marginBottom: '20px', textAlign: 'center', fontFamily: 'Cooper-bt-bold' }}>Sign In</h1>
           <form onSubmit={handleSubmit}>
             <Box
               sx={{
@@ -128,14 +128,14 @@ export const Login = () => {
               />
 
               {/* Login Button */}
-              <Button variant="contained" type="submit" style={{ width: '100%', marginTop: '20px', backgroundColor: '#688bf2', color: '#fff' }}>
+              <Button variant="contained" type="submit" style={{ width: '100%', marginTop: '20px', backgroundColor: '#688bf2', color: '#fff', fontFamily: 'Cooper-bt' }}>
               Innskráning
               </Button>
 
               {/* SignUp Button */}
               <Button
                 variant="contained"
-                style={{ width: '100%', marginTop: '10px', backgroundColor: '#688bf2', color: '#fff' }}
+                style={{ width: '100%', marginTop: '10px', backgroundColor: '#688bf2', color: '#fff' , fontFamily: 'Cooper-bt'}}
                 onClick={() => navigate("/signup")}
               >
                 Skráning
@@ -153,7 +153,7 @@ export const Login = () => {
   onClick={() => navigate("/forget")}
 >
   <HelpIcon sx={{ fontSize: '18px', marginRight: '5px' }} />
-  <Typography variant="body2" sx={{ color: '#0b78f7' }}>
+  <Typography variant="body2" sx={{ color: '#0b78f7',fontFamily: 'Cooper-bt' }}>
     Forget Password
   </Typography>
 </Box>

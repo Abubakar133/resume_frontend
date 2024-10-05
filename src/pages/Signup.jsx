@@ -44,7 +44,7 @@ export const Signup = () => {
             <img width="200" height="100" src="https://easycv.is/wp-content/uploads/2024/09/logoslogangif.gif" alt="Logo" />
           </a>
         </div>
-        <h1 style={{ fontSize: '24px', fontWeight: '600', marginBottom: '20px', textAlign: 'center' }}>Sign Up</h1>
+        <h1 style={{ fontSize: '24px', fontWeight: '600', marginBottom: '20px', textAlign: 'center', fontFamily: 'Cooper-bt-bold' }}>Sign Up</h1>
         <Box component="form" sx={{ "& > :not(style)": { m: 1, width: "100%" } }} onSubmit={handleNext}>
           <TextField
             label="Username - Nafn"
@@ -122,7 +122,7 @@ export const Signup = () => {
               "& .MuiFormLabel-root.Mui-focused": { color: '#1976d2' },
             }}
           />
-          <Button type="submit" variant="contained" sx={{ backgroundColor: "#688bf2", color: "#fff", mt: 2, width: '100%' }}>Skráning</Button>
+          <Button type="submit" variant="contained" sx={{ backgroundColor: "#688bf2", color: "#fff", mt: 2, width: '100%',fontFamily: 'Cooper-bt' }}>Skráning</Button>
         </Box>
       </main>
     </section>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { TextField, Box, Button } from "@mui/material";
+import { TextField, Box, Button, Typography } from "@mui/material";
 import { BASE_URL } from "../config";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export const Forget = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({ email: "", password: "" });
+  const [emailSent, setEmailSent] = useState(false); // State to track email sent status
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -26,15 +27,14 @@ export const Forget = () => {
         }
       );
       if (response.status === 200) {
-        toast.success("Login Successful");
-        
+        toast.success("Email sent to your email");
+        setEmailSent(true); // Update state to show success message
         setUser({ email: "", password: "" });
-       
       } else {
         toast.error(response.data.message || "Invalid Credentials");
       }
     } catch (error) {
-      toast.error("An error occurred during login.");
+      toast.error("Password not Reset.");
     }
   };
 
@@ -54,7 +54,7 @@ export const Forget = () => {
           </a>
         </div>
         <div>
-          <h1 style={{ fontSize: '24px', fontWeight: '600', marginBottom: '20px', textAlign: 'center' }}>Forget Password</h1>
+          <h1 style={{ fontSize: '24px', fontWeight: '600', marginBottom: '20px', textAlign: 'center', fontFamily: 'Cooper-bt-bold' }}>Forget Password</h1>
           <form onSubmit={handleSubmit}>
             <Box
               sx={{
@@ -106,7 +106,7 @@ export const Forget = () => {
                 variant="outlined"
                 size="small"
                 required
-                placeholder="ew Password"
+                placeholder="New Password"
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     borderRadius: '8px',
@@ -124,20 +124,31 @@ export const Forget = () => {
                 }}
               />
 
+              {/* Conditional Typography Message */}
+              {emailSent && (
+                <Typography 
+                  sx={{ 
+                    marginBottom: 1, 
+                    color: 'red', 
+                    fontSize: '0.875rem', 
+                  }}
+                >
+                  Email sent to your email. Please check your email and click the link to reset your password! Thank you.
+                </Typography>
+              )}
+
               {/* Login Button */}
-              <Button variant="contained" type="submit" style={{ width: '100%', marginTop: '20px', backgroundColor: '#688bf2', color: '#fff' }}>
-              Endurstilla lykilorð
+              <Button variant="contained" type="submit" style={{ width: '100%', marginTop: '20px', backgroundColor: '#688bf2', color: '#fff', fontFamily: 'Cooper-bt' }}>
+                Endurstilla lykilorð
               </Button>
 
               <Button
                 variant="contained"
-                style={{ width: '100%', marginTop: '10px', backgroundColor: '#688bf2', color: '#fff' }}
+                style={{ width: '100%', marginTop: '10px', backgroundColor: '#688bf2', color: '#fff', fontFamily: 'Cooper-bt' }}
                 onClick={() => navigate("/login")}
               >
                 Innskráning
               </Button>
-              {/* SignUp Button */}
-             
             </Box>
           </form>
         </div>
