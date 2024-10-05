@@ -895,21 +895,6 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
               </div>
             </div>
 
-<div class="font-dm-sans">
-  This text uses DM Sans.
-</div>
-
-<div class="font-courier-prime">
-  This text uses Courier Prime.
-</div>
-
-<div class="font-cooper-bt">
-  This text uses Cooper-bT.
-</div>
-
-<div class="font-cooper-bt-bold">
-  This text uses Cooper-bt-bold.
-</div>
 
 
 
