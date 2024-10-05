@@ -22,7 +22,7 @@ const Footer = () => {
             style={{
               fontWeight: 'bolder',
               color: '#4A492A', // Highlight color for main title
-              fontFamily: 'Old Standard TT, serif', // Set font family for main title
+              fontFamily: 'Cooper-bt', // Set font family for main title
             }}
             gutterBottom
           >
@@ -37,7 +37,7 @@ const Footer = () => {
             style={{
               fontWeight: 'bold',
               color: '#333', // Change heading color if needed
-              fontFamily: 'Old Standard TT, serif', // Set font family for headings
+              fontFamily: 'Cooper-bt', // Set font family for headings
             }}
             gutterBottom
           >
@@ -57,7 +57,7 @@ const Footer = () => {
             style={{
               fontWeight: 'bold',
               color: '#333', // Change heading color if needed
-              fontFamily: 'Old Standard TT, serif', // Set font family for headings
+              fontFamily: 'Cooper-bt', // Set font family for headings
             }}
             gutterBottom
           >
@@ -76,7 +76,7 @@ const Footer = () => {
             style={{
               fontWeight: 'bold',
               color: '#333', // Change heading color if needed
-              fontFamily: 'Old Standard TT, serif', // Set font family for headings
+              fontFamily: 'Cooper-bt', // Set font family for headings
             }}
             gutterBottom
           >
@@ -95,7 +95,7 @@ const Footer = () => {
             style={{
               fontWeight: 'bold',
               color: '#333', // Change heading color if needed
-              fontFamily: 'Old Standard TT, serif', // Set font family for headings
+              fontFamily: 'Cooper-bt', // Set font family for headings
             }}
             gutterBottom
           >

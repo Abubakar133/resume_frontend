@@ -45,30 +45,30 @@ const userid =localStorage.getItem("userId");
   ]);
 
   const [skills, setSkills] = useState([
-    {
-      title: "Microsoft",
-      percentage: "75",
-    },
-    {
-      title: "Google workspace",
-      percentage: "75",
-    },
-    {
-      title: "Excel",
-      percentage: "75",
-    },
-    {
-      title: "CRM",
-      percentage: "75",
-    },
-    {
-      title: "Image editing program",
-      percentage: "75",
-    },
-    {
-      title: "Word",
-      percentage: "75",
-    },
+    // {
+    //   title: "Microsoft",
+    //   percentage: "75",
+    // },
+    // {
+    //   title: "Google workspace",
+    //   percentage: "75",
+    // },
+    // {
+    //   title: "Excel",
+    //   percentage: "75",
+    // },
+    // {
+    //   title: "CRM",
+    //   percentage: "75",
+    // },
+    // {
+    //   title: "Image editing program",
+    //   percentage: "75",
+    // },
+    // {
+    //   title: "Word",
+    //   percentage: "75",
+    // },
   ]);
  
   

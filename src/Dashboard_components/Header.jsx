@@ -84,7 +84,7 @@ function Header() {
       ].map((item, index) => (
         <button
           key={index}
-          className={`relative cursor-pointer uppercase font-bold whitespace-nowrap mx-2 bg-transparent border-none text-black focus:outline-none overflow-hidden group ${
+          className={`relative cursor-pointer uppercase font-bold font-cooper-bt-bold whitespace-nowrap mx-2 bg-transparent border-none text-black focus:outline-none overflow-hidden group ${
             activeButton === index ? 'text-blue-500 after:bg-blue-500' : ''
           }`}
           onClick={() => handleNavigation(index, item.path)} // Set active button and navigate
@@ -106,7 +106,7 @@ function Header() {
           
           </div>
           </a>
-          <button className="cursor-pointer bg-transparent text-blue-500 border-none" onClick={handleLogout}>
+          <button className="cursor-pointer bg-transparent text-blue-500 font-cooper-bt border-none" onClick={handleLogout}>
           
           <RiLogoutCircleRFill size={30}/>
           <b className="flex items-center">Útskrá</b>
@@ -141,26 +141,26 @@ function Header() {
       ></div>
     )}
     <div className="flex flex-col items-center justify-center h-full text-white">
-      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group"  onClick={() => navigate('/')}>
+      <button className="relative cursor-pointer uppercase font-bold font-cooper-bt whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group"  onClick={() => navigate('/')}>
         <span className="relative z-10"  >Heim</span>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
 
-      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() => navigate('/')}>
+      <button className="relative cursor-pointer uppercase font-bold font-cooper-bt whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() => navigate('/')}>
         <span className="relative z-10" >Um okkur</span>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
-      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() => navigate('/')}>
+      <button className="relative cursor-pointer uppercase font-bold font-cooper-bt whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() => navigate('/')}>
         <span className="relative z-10">Hafðu samband</span>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
 
-      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() =>navigate('/Dashboard')}>
+      <button className="relative cursor-pointer uppercase font-bold font-cooper-bt whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() =>navigate('/Dashboard')}>
         <span className="relative z-10">CV Generator</span>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>
 
-      <button className="relative cursor-pointer uppercase font-bold whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() =>navigate('/Dashboard2')}>
+      <button className="relative cursor-pointer uppercase font-bold font-cooper-bt whitespace-nowrap mb-4 bg-transparent border-none text-white focus:outline-none overflow-hidden group" onClick={() =>navigate('/Dashboard2')}>
         <span className="relative z-10">Mælaborð</span>
         <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
       </button>

@@ -12,6 +12,7 @@ import Dashboard2 from './pages/Dashboard2';
 import Success from './Dashboard_components/success';
 import Home from './pages/BlogIframe'
 import {Forget} from './pages/forgetpassword'
+import UploadComponent from './pages/selectfile'
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
       <Route path="/Dashboard2" element={<Dashboard2 />} />
       <Route path="/Success" element={<Success />} />
       <Route path="/forget" element={<Forget />} />
-
+      <Route path="/file" element={<UploadComponent  />} />
 
      
     </Routes>

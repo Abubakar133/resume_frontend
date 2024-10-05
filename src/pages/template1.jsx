@@ -30,14 +30,14 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { FadeInOutWIthOpacity, opacityINOut } from "./animation";
 
-const Template1 = ({ formData, experiences, education, skills,Languages }) => {
+const Template1 = ({ formData, experiences, education, skills, Languages }) => {
   const { pathname } = useLocation();
   const location = useLocation();
   const navigate = useNavigate();
   const templateName = pathname?.split("/")?.slice(-1);
   const searchParams = new URLSearchParams(location.search);
   const loadedTemplateId = searchParams.get("templateId");
-  
+
 
   const [isVisible, setIsVisible] = useState(true);
 
@@ -84,11 +84,11 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
       toast.info("Unable to capture the content at the moment");
       return;
     }
-  
+
     // Clone the element to capture the content accurately
     const clone = element.cloneNode(true);
     document.body.appendChild(clone);
-  
+
     // Apply styles to the clone to ensure it fits within the PDF
     clone.style.position = 'absolute';
     clone.style.top = '0';
@@ -97,33 +97,33 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
     clone.style.height = '297mm'; // A4 height
     clone.style.overflow = 'visible'; // Prevent overflow
     clone.style.backgroundColor = 'white'; // Ensure background color is white for visibility
-  
+
     // Add padding/margins to ensure content doesn't clip
     clone.style.padding = '0'; // Remove any padding/margins that could cause misalignment
     clone.style.margin = '0';
-  
+
     // Wait for the browser to render the clone
     setTimeout(() => {
-      domtoimage.toPng(clone, { quality: 1,scale: 5, width: 830, height: 1200 }) 
+      domtoimage.toPng(clone, { quality: 1, scale: 5, width: 830, height: 1200 })
         .then((dataUrl) => {
           const pdf = new jsPDF({
             unit: 'mm',
             format: 'a4',
           });
-  
+
           const imgWidth = 210; // A4 width in mm
           const imgHeight = (clone.offsetHeight * imgWidth) / clone.offsetWidth;
           pdf.addImage(dataUrl, 'PNG', 0, 0, imgWidth, imgHeight);
-         
+
 
           pdf.save("image");
           // Check if pdfBlob is valid
-        
-       handleUploadPDF();
+
+          handleUploadPDF();
           // Call the function to upload the generated PDF
-         
+
           //pdf.save('resume.pdf');
-          
+
           // Cleanup
           document.body.removeChild(clone);
         })
@@ -138,10 +138,10 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
   const handlePaymentAndDownload = async () => {
 
     const userId = localStorage.getItem("userId");
- 
+
     // Get the Stripe object
     const stripe = await stripePromise;
-  
+
     try {
       // Create a Checkout session by calling your backend
       const response = await axios.post(`${BASE_URL}/create-checkout-session`, {
@@ -151,14 +151,14 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
           'Content-Type': 'application/json',
         },
       });
-  
+
       const session = response.data;
-  
+
       // Redirect to Stripe Checkout
       const { error } = await stripe.redirectToCheckout({
         sessionId: session.id,
       });
-  
+
       if (error) {
         console.error('Stripe Checkout Error:', error);
       }
@@ -173,74 +173,74 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
   const checkSubscriptionStatus = async () => {
     try {
       const userId = localStorage.getItem("userId");
-      
+
       const response = await axios.post(`${BASE_URL}/check-subscription`, {
-        userId, 
+        userId,
       }, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-  
+
       if (response.data.isActive) {
         // Display remaining days to the user
         setSubscriptionUpdated(true);
         setRemainingDays(response.data.remainingDays);
-       
+
       } else {
         setSubscriptionUpdated(false);
         setRemainingDays(null);
-       
+
       }
     } catch (error) {
       console.error('Error checking subscription status:', error);
     }
   };
-  
-  
 
-  const handleUploadPDF = async ( event) => {
+
+
+  const handleUploadPDF = async (event) => {
     event.preventDefault();
     const file = event.target.files[0];
     if (!file) return;
 
     if (file.type !== 'application/pdf') {
-    
+
       toast.error("Please select a PDF file only.");
       return;
     }
-   else{
+    else {
 
-    const userId = localStorage.getItem("userId");
-    
- 
-    try {
-          const uploadResponse = await uploadImageToCloudinarypdf(file);
-      const pdfUrl = uploadResponse.secure_url;
-      //const pdfUrl = "ajaghuy";
+      const userId = localStorage.getItem("userId");
+
+
+      try {
+        const uploadResponse = await uploadImageToCloudinarypdf(file);
+        const pdfUrl = uploadResponse.secure_url;
+        //const pdfUrl = "ajaghuy";
 
         // Log the user ID to confirm it's retrieved correctly
         console.log("User ID:", userId);
 
         // Make the API request to upload PDF link
         const response = await axios.post(`${BASE_URL}/userdata/upload_pdf/`, {
-            userId: userId,
-            pdflink: pdfUrl,
+          userId: userId,
+          pdflink: pdfUrl,
         });
 
         // Check response
         if (response.status === 200) {
-            toast.success("PDF uploaded and updated successfully");
+          toast.success("PDF uploaded and updated successfully");
         } else {
-            toast.error("Failed to update PDF URL");
+          toast.error("Failed to update PDF URL");
         }
-    } catch (error) {
+      } catch (error) {
         console.error("Error during PDF upload:", error);
         toast.error("Failed to upload PDF");
-    }
+      }
 
-  }
-};
+    }
+  };
 
 
 
@@ -268,10 +268,10 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
     }
   };
 
-  
+
   const handleFileSelect = async (event) => {
     setImageAsset((prevAsset) => ({ ...prevAsset, isImageLoading: true }));
-   
+
     const file = event.target.files[0];
     if (file && isAllowed(file)) {
       const reader = new FileReader();
@@ -280,14 +280,14 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
         const dataURL = event.target.result;
         console.log("Data URL:", dataURL);
 
-       
+
         setImageAsset((prevAsset) => ({
           ...prevAsset,
           imageURL: dataURL,
         }));
       };
 
-     
+
       reader.readAsDataURL(file);
     } else {
       toast.error("Invalid File Format");
@@ -299,7 +299,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
     return allowedTypes.includes(file.type);
   };
 
- 
+
   const deleteImageObject = () => {
     setImageAsset((prevAsset) => ({
       ...prevAsset,
@@ -311,23 +311,23 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
 
   const handleExpChange = (index, e) => {
     const { name, value } = e.target;
-   
+
     const updatedExperiences = [...experiences];
-    
+
     updatedExperiences[index][name] = value;
-   
+
     setExperiences(updatedExperiences);
   };
 
   const removeExperience = (index) => {
-   
+
     const updatedExperiences = [...experiences];
     updatedExperiences.splice(index, 1);
-   
+
     setExperiences(updatedExperiences);
   };
 
- 
+
 
   const handleSkillsChange = (index, e) => {
     const { name, value } = e.target;
@@ -392,23 +392,23 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
   //     toast.info("Unable to capture the content at the moment");
   //     return;
   //   }
-    
+
   //   // Temporarily set the dimensions of the element
   //   const originalStyle = {
   //     width: element.style.width,
   //     height: element.style.height,
   //   };
-    
+
   //   const imgWidth = element.style.width = '210mm'; // A4 width
   //   element.style.height = (element.offsetHeight * imgWidth) / element.offsetWidth;
-  
+
   //   const options = {
   //     filename: 'resume.pdf',
   //     image: { type: 'jpg', quality: 0.98 },
   //     html2canvas: { scale: 2 },
   //     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
   //   };
-  
+
   //   html2pdf().from(element).set(options).save().then(() => {
   //     // Restore original dimensions after saving
   //     element.style.width = originalStyle.width;
@@ -424,134 +424,132 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
 
   const generatePDF = () => {
     //toggleVisibility();
-    if(subscriptionUpdated){
-   toggle(true);
-  
-    // Wait for the browser to render the clone
-    setTimeout(() => {
+    if (subscriptionUpdated) {
+      toggle(true);
 
-      
-    const element = resumeRef.current;
-    if (!element) {
-      toast.info("Unable to capture the content at the moment");
-      return;
-    }
-  
-    // Clone the element to capture the content accurately
-    const clone = element.cloneNode(true);
-    document.body.appendChild(clone);
+      // Wait for the browser to render the clone
+      setTimeout(() => {
 
-    
-   
-    // Apply styles to the clone to ensure it fits within the PDF
-    clone.style.position = 'absolute';
-    clone.style.top = '0';
-    clone.style.left = '0';
-    clone.style.width = '210mm'; // A4 width
-    clone.style.height = '297mm'; // A4 height
-    clone.style.overflow = 'visible'; // Prevent overflow
-    clone.style.backgroundColor = 'white'; // Ensure background color is white for visibility
-    const calculatedHeight = clone.scrollHeight;
-    
-    // Add padding/margins to ensure content doesn't clip
-    clone.style.padding = '0'; // Remove any padding/margins that could cause misalignment
-    clone.style.margin = '0';
-      domtoimage.toPng(clone, { quality: 1,scale: 5, width: 830, height:calculatedHeight }) 
-        .then((dataUrl) => {
-          const pdf = new jsPDF({
-            unit: 'mm',
-            format: 'a4',
-          });
-  
-          const imgWidth = 210; // A4 width in mm
-          const imgHeight = (clone.offsetHeight * imgWidth) / clone.offsetWidth;
-          pdf.addImage(dataUrl, 'PNG', 0, 0, imgWidth, imgHeight);
-          pdf.save('resume.pdf');
-          
-          // Cleanup
-          document.body.removeChild(clone);
-          if( window.innerWidth < 550)
-            {
-             toggle(false);
-         
+
+        const element = resumeRef.current;
+        if (!element) {
+          toast.info("Unable to capture the content at the moment");
+          return;
+        }
+
+        // Clone the element to capture the content accurately
+        const clone = element.cloneNode(true);
+        document.body.appendChild(clone);
+
+
+
+        // Apply styles to the clone to ensure it fits within the PDF
+        clone.style.position = 'absolute';
+        clone.style.top = '0';
+        clone.style.left = '0';
+        clone.style.width = '210mm'; // A4 width
+        clone.style.height = '297mm'; // A4 height
+        clone.style.overflow = 'visible'; // Prevent overflow
+        clone.style.backgroundColor = 'white'; // Ensure background color is white for visibility
+        const calculatedHeight = clone.scrollHeight;
+
+        // Add padding/margins to ensure content doesn't clip
+        clone.style.padding = '0'; // Remove any padding/margins that could cause misalignment
+        clone.style.margin = '0';
+        domtoimage.toPng(clone, { quality: 1, scale: 5, width: 830, height: calculatedHeight })
+          .then((dataUrl) => {
+            const pdf = new jsPDF({
+              unit: 'mm',
+              format: 'a4',
+            });
+
+            const imgWidth = 210; // A4 width in mm
+            const imgHeight = (clone.offsetHeight * imgWidth) / clone.offsetWidth;
+            pdf.addImage(dataUrl, 'PNG', 0, 0, imgWidth, imgHeight);
+            pdf.save('resume.pdf');
+
+            // Cleanup
+            document.body.removeChild(clone);
+            if (window.innerWidth < 550) {
+              toggle(false);
+
             }
-        })
-        .catch((error) => {
-          console.error('Error generating PDF1:', error);
-          toast.error("Please Select the Image");
-        });
-        
-    }, 2000); // Delay to ensure clone is rendered
-  }
-  else {
-    toast.error("Please get a Subscription");
-  }
+          })
+          .catch((error) => {
+            console.error('Error generating PDF1:', error);
+            toast.error("Please Select the Image");
+          });
+
+      }, 2000); // Delay to ensure clone is rendered
+    }
+    else {
+      toast.error("Please get a Subscription");
+    }
   };
-  
+
 
   const generateImage = (format) => {
 
 
-    if(subscriptionUpdated){
-    toggle(true);
+    if (subscriptionUpdated) {
+      toggle(true);
 
 
 
-    // Allow the browser to render the clone properly
-    setTimeout(() => {
+      // Allow the browser to render the clone properly
+      setTimeout(() => {
 
-      
-    const element = resumeRef.current;
-    if (!element) {
-      toast.info("Unable to capture the content at the moment");
-      return;
-    }
 
-    const clone = element.cloneNode(true);
-    document.body.appendChild(clone);
-
-    clone.style.position = 'absolute';
-    clone.style.top = '0';
-    clone.style.left = '0';
-    clone.style.width = '210mm'; // A4 width
-    clone.style.height = '297mm'; // A4 height
-    clone.style.overflow = 'visible';
-    clone.style.backgroundColor = 'white';
-    const calculatedHeight = clone.scrollHeight;
-    // Remove padding and margins
-    clone.style.padding = '0';
-    clone.style.margin = '0';
-
-      domtoimage.toPng(clone, {
-        quality: 1,
-        scale: 5, // Use a high scale for better resolution
-        width: 830, height: calculatedHeight,
-      })
-      .then((dataUrl) => {
-        if (format === 'png') {
-          downloadImage(dataUrl, 'resume.png');
-        } else if (format === 'jpg') {
-          convertToJPG(dataUrl, 'resume.jpg');
+        const element = resumeRef.current;
+        if (!element) {
+          toast.info("Unable to capture the content at the moment");
+          return;
         }
 
-        document.body.removeChild(clone);
+        const clone = element.cloneNode(true);
+        document.body.appendChild(clone);
 
-        if( window.innerWidth < 550)
-          {
-           toggle(false);
-       
-          }
-      })
-      .catch((error) => {
-        console.error('Error generating image:', error);
-        toast.error("Please Select the Image");
-      });
-    }, 1000); // Delay to ensure clone is rendered
+        clone.style.position = 'absolute';
+        clone.style.top = '0';
+        clone.style.left = '0';
+        clone.style.width = '210mm'; // A4 width
+        clone.style.height = '297mm'; // A4 height
+        clone.style.overflow = 'visible';
+        clone.style.backgroundColor = 'white';
+        const calculatedHeight = clone.scrollHeight;
+        // Remove padding and margins
+        clone.style.padding = '0';
+        clone.style.margin = '0';
 
-  }
-  else {
-    toast.error("Please get a Subscription");
-  }
+        domtoimage.toPng(clone, {
+          quality: 1,
+          scale: 5, // Use a high scale for better resolution
+          width: 830, height: calculatedHeight,
+        })
+          .then((dataUrl) => {
+            if (format === 'png') {
+              downloadImage(dataUrl, 'resume.png');
+            } else if (format === 'jpg') {
+              convertToJPG(dataUrl, 'resume.jpg');
+            }
+
+            document.body.removeChild(clone);
+
+            if (window.innerWidth < 550) {
+              toggle(false);
+
+            }
+          })
+          .catch((error) => {
+            console.error('Error generating image:', error);
+            toast.error("Please Select the Image");
+          });
+      }, 1000); // Delay to ensure clone is rendered
+
+    }
+    else {
+      toast.error("Please get a Subscription");
+    }
   };
 
   // Function to download the image
@@ -582,114 +580,116 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
       downloadImage(jpgDataUrl, filename);
     };
   };
-  
+
 
   return (
     <div className="lg:w-full   lg:flex lg:flex-col items-center justify-start gap-4 overflow-hidden">
-       <div className="w-full  w-[300px]  lg:w-[1200px] grid grid-cols-1 lg:grid-cols-12 px-6 lg:px-32">
+      <div className="w-full  w-[300px]  lg:w-[1200px] grid grid-cols-1 lg:grid-cols-12 px-6 lg:px-32">
         <div className="col-span-12 px-4 py-6">
-        <div className="flex flex-wrap items-center justify-center w-full gap-4 lg:gap-12 mb-4">
-  {/* Edit Button */}
+          <div className="flex flex-wrap items-center justify-center w-full gap-4 lg:gap-12 mb-4">
+            {/* Edit Button */}
 
- 
-            
-            
+
+
+
             {remainingDays !== null && (
               <div className="text-sm text-red-500 ">
-               
+
                 Þú átt {remainingDays} daga eftir af áskriftinni þinni.
               </div>
             )}
-       
-       {!subscriptionUpdated && (
-  <div
-    className="flex items-center justify-center gap-1 px-3 py-1  rounded-md bg-red-200 cursor-pointer"
-    onClick={handlePaymentAndDownload}
-  >
-    {isEdit ? (
-      <FaPenToSquare className="text-sm text-txtPrimary" />
-    ) : (
-      <FaPencil className="text-sm text-txtPrimary" />
-    )}
-    <p className="text-sm text-txtPrimary">Fáðu áskrift</p>
-  </div> 
-       )}
-  
-  
-  <div
-    className="flex items-center justify-center gap-1 px-3 py-1 rounded-md bg-gray-200 cursor-pointer"
-    onClick={handleIconClick} // Handle div click to trigger file input
-  >
-    <BiSolidBookmarks className="text-sm text-txtPrimary" />
-    <p className="text-sm text-txtPrimary">hlaða upp í ský</p>
 
-    {/* Hidden file input for selecting PDF files */}
-    <input
-      type="file"
-      accept=".pdf"
-      ref={fileInputRefs} // Assign ref to this input
-      className="hidden" // Hide the actual input element
-      onChange={(event) => handleUploadPDF(event)}
-    />
-  </div>
+            {!subscriptionUpdated && (
+              <div
+                className="flex items-center justify-center gap-1 px-3 py-1  rounded-md bg-red-200 cursor-pointer"
+                onClick={handlePaymentAndDownload}
+              >
+                {isEdit ? (
+                  <FaPenToSquare className="text-sm text-txtPrimary" />
+                ) : (
+                  <FaPencil className="text-sm text-txtPrimary" />
+                )}
+                <p className="text-sm text-txtPrimary">Fáðu áskrift</p>
+              </div>
+            )}
 
-  {/* Download Section */}
-  <div className="flex flex-wrap items-center justify-center gap-2">
-    <p className="text-sm text-txtPrimary">Sækja : </p>
-    <BsFiletypePdf
-      className="text-xl md:text-2xl text-txtPrimary cursor-pointer"
-      onClick={generatePDF}
-    />
-    <BsFiletypePng
-      className="text-xl md:text-2xl text-txtPrimary cursor-pointer"
-      onClick={() => generateImage('png')}
-    />
-    <BsFiletypeJpg
-      className="text-xl md:text-2xl text-txtPrimary cursor-pointer"
-      onClick={() => generateImage('jpg')}
-    />
-  </div>
-</div>
+
+            <div
+              className="flex items-center justify-center gap-1 px-3 py-1 rounded-md bg-gray-200 cursor-pointer"
+              onClick={handleIconClick} // Handle div click to trigger file input
+            >
+              <BiSolidBookmarks className="text-sm text-txtPrimary" />
+              <p className="text-sm text-txtPrimary">hlaða upp í ský</p>
+
+              {/* Hidden file input for selecting PDF files */}
+              <input
+                type="file"
+                accept=".pdf"
+                ref={fileInputRefs} // Assign ref to this input
+                className="hidden" // Hide the actual input element
+                onChange={(event) => handleUploadPDF(event)}
+              />
+            </div>
+
+            {/* Download Section */}
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <p className="text-sm text-txtPrimary">Sækja : </p>
+              <BsFiletypePdf
+                className="text-xl md:text-2xl text-txtPrimary cursor-pointer"
+                onClick={generatePDF}
+              />
+              <BsFiletypePng
+                className="text-xl md:text-2xl text-txtPrimary cursor-pointer"
+                onClick={() => generateImage('png')}
+              />
+              <BsFiletypeJpg
+                className="text-xl md:text-2xl text-txtPrimary cursor-pointer"
+                onClick={() => generateImage('jpg')}
+              />
+            </div>
+          </div>
 
 
 
 
           <div className="w-full h-auto grid grid-cols-12 " ref={resumeRef}>
-            
-            
-            
-            
-            
+
+
+
+
+
             <div className="col-span-4 bg-black flex flex-col items-center justify-start">
               <div className="w-full h-100 lg:h-80 bg-gray-300 flex items-center justify-center">
                 {!imageAsset.imageURL ? (
                   <React.Fragment>
                     <label className=" w-full cursor-pointer h-full">
-                      <div className="w-full flex flex-col items-center justify-center h-full">
-                        <div className="w-full flex flex-col justify-center items-center cursor-pointer">
-                          <img
-                            src=""
-                            className="w-full h-80 object-cover"
-                            alt=""
-                          />
-                        </div>
-                      </div>
+                      {formData.file && (
+                        <div className="w-full flex flex-col items-center justify-center h-full">
+                          <div className="w-full flex flex-col justify-center items-center cursor-pointer">
+                            <img
+                              src={URL.createObjectURL(formData.file)}
 
-                      
-                        <input
-                          type="file"
-                          className="w-0 h-0"
-                          accept=".jpeg,.jpg,.png"
-                          onChange={handleFileSelect}
-                        />
-                      
+                              className="w-full h-80 object-cover"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                      )}
+
+                      <input
+                        type="file"
+                        className="w-0 h-0"
+                        accept=".jpeg,.jpg,.png"
+                        onChange={handleFileSelect}
+                      />
+
                     </label>
                   </React.Fragment>
                 ) : (
                   <div className="relative w-full h-full overflow-hidden rounded-md">
                     <img
-                      src={imageAsset.imageURL}
-                      alt="uploaded image"
+                      src={URL.createObjectURL(formData.file)}
+                      alt="Uploaded Preview"
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />
@@ -709,71 +709,69 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
 
                 <div className="w-full">
                   <p className="uppercase text-lg font-semibold text-gray-300 ml-4">
-                  Menntun
+                    Menntun
                   </p>
                   <div className="w-full h-[2px] bg-yellow-400"></div>
-                    {education &&
-                      education?.map((edu, i) => (
-                        <motion.div
-                          key={i}
-                          {...opacityINOut(i)}
-                          className="w-full pl-4 mt-3 relative"
-                        >
-                          <input
-                            type="text"
-                            readOnly="true"
-                            name="major"
-                            value={edu.major}
-                            onChange={(e) => handleEducationChange(i, e)}
-                            className={`bg-transparent outline-none border-none text-sm font-semibold uppercase  text-gray-300  ${
-                              isEdit && "text-yellow-900 w-full"
+                  {education &&
+                    education?.map((edu, i) => (
+                      <motion.div
+                        key={i}
+                        {...opacityINOut(i)}
+                        className="w-full pl-4 mt-3 relative"
+                      >
+                        <input
+                          type="text"
+                          readOnly="true"
+                          name="major"
+                          value={edu.major}
+                          onChange={(e) => handleEducationChange(i, e)}
+                          className={`bg-transparent outline-none border-none text-sm font-semibold uppercase  text-gray-300  ${isEdit && "text-yellow-900 w-full"
                             }`}
-                          />
+                        />
 
-                          <textarea
-                            readOnly="true"
-                            className={`text-xs text-gray-300 mt-2  w-full  outline-none border-none ${
-                              isEdit ? "bg-[#1c1c1c]" : "bg-transparent"
+                        <textarea
+                          readOnly="true"
+                          className={`text-xs text-gray-300 mt-2  w-full  outline-none border-none ${isEdit ? "bg-[#1c1c1c]" : "bg-transparent"
                             }`}
-                            name="university"
-                            value={edu.university}
-                            onChange={(e) => handleEducationChange(i, e)}
-                            rows="2"
-                            style={{
-                              maxHeight: "auto",
-                              minHeight: "40px",
-                              resize: "none",
-                            }}
-                          />
-                          
-                            {isEdit && (
-                              <motion.div
-                                {...FadeInOutWIthOpacity}
-                                onClick={() => removeEducation(i)}
-                                className="cursor-pointer absolute right-2 top-0"
-                              >
-                                <FaTrash className="text-sm text-gray-300" />
-                              </motion.div>
-                            )}
-                          
-                        </motion.div>
-                      ))}
-                
+                          name="university"
+                          value={edu.university}
+                          onChange={(e) => handleEducationChange(i, e)}
+                          rows="2"
+                          style={{
+                            maxHeight: "auto",
+                            minHeight: "40px",
+                            resize: "none",
+                          }}
+                        />
+
+                        {isEdit && (
+                          <motion.div
+                            {...FadeInOutWIthOpacity}
+                            onClick={() => removeEducation(i)}
+                            className="cursor-pointer absolute right-2 top-0"
+                          >
+                            <FaTrash className="text-sm text-gray-300" />
+                          </motion.div>
+                        )}
+
+                      </motion.div>
+                    ))}
+
                 </div>
 
-                
-                  {isEdit && (
-                    <motion.div
-                      {...FadeInOutWIthOpacity}
-                      onClick={addEducation}
-                      className="cursor-pointer"
-                    >
-                      <FaPlus className="text-base text-gray-300" />
-                    </motion.div>
-                  )}
+
+                {isEdit && (
+                  <motion.div
+                    {...FadeInOutWIthOpacity}
+                    onClick={addEducation}
+                    className="cursor-pointer"
+                  >
+                    <FaPlus className="text-base text-gray-300" />
+                  </motion.div>
+                )}
                 <div className="w-full">
                   <p className="bg-transparent uppercase text-lg font-semibold text-gray-300 ml-4">
-                  Tilvísun
+                    Tilvísun
                   </p>
                   <div className="w-full h-[2px] bg-yellow-400 mt-2"></div>
                   <div className="w-full pl-4 mt-3">
@@ -783,9 +781,8 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                       name="refererName"
                       type="text"
                       readOnly="true"
-                      className={`bg-transparent outline-none border-none text-base tracking-widest capitalize text-gray-300 w-full ${
-                        isEdit && "bg-[#1c1c1c]"
-                      }`}
+                      className={`bg-transparent outline-none border-none text-base tracking-widest capitalize text-gray-300 w-full ${isEdit && "bg-[#1c1c1c]"
+                        }`}
                     />
                     <input
                       value={formData.refererRole}
@@ -793,9 +790,8 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                       name="refererRole"
                       type="text"
                       readOnly="true"
-                      className={`bg-transparent outline-none border-none text-xs capitalize text-gray-300 w-full ${
-                        isEdit && "bg-[#1c1c1c]"
-                      }`}
+                      className={`bg-transparent outline-none border-none text-xs capitalize text-gray-300 w-full ${isEdit && "bg-[#1c1c1c]"
+                        }`}
                     />
                     <input
                       value={formData.refemail}
@@ -803,9 +799,8 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                       name="refemail"
                       type="email"
                       readOnly="true"
-                      className={`bg-transparent outline-none border-none text-xs capitalize text-gray-300 w-full ${
-                        isEdit && "bg-[#1c1c1c]"
-                      }`}
+                      className={`bg-transparent outline-none border-none text-xs capitalize text-gray-300 w-full ${isEdit && "bg-[#1c1c1c]"
+                        }`}
                     />
                   </div>
                 </div>
@@ -820,7 +815,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                   <div className="col-span-8">
                     <div className="w-full h-6 bg-[rgba(45,45,45,0.6)] px-3 flex items-center">
                       <p className="text-sm font-semibold text-gray-300">
-                      Sími
+                        Sími
                       </p>
                     </div>
                     <input
@@ -829,9 +824,8 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                       name="mobile"
                       type="text"
                       readOnly="true"
-                      className={`bg-transparent outline-none border-none text-xs px-3 mt-2 text-gray-300 w-full ${
-                        isEdit && "bg-[#1c1c1c]"
-                      }`}
+                      className={`bg-transparent outline-none border-none text-xs px-3 mt-2 text-gray-300 w-full ${isEdit && "bg-[#1c1c1c]"
+                        }`}
                     />
                   </div>
                 </div>
@@ -840,7 +834,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                   <div className="col-span-8">
                     <div className="w-full h-6 bg-[rgba(45,45,45,0.6)] px-3 flex items-center">
                       <p className="text-sm font-semibold text-gray-300">
-                      Netfang
+                        Netfang
                       </p>
                     </div>
                     <input
@@ -849,9 +843,8 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                       name="email"
                       type="text"
                       readOnly="true"
-                      className={`bg-transparent outline-none border-none text-xs px-3 mt-2 text-gray-300 w-full ${
-                        isEdit && "bg-[#1c1c1c]"
-                      }`}
+                      className={`bg-transparent outline-none border-none text-xs px-3 mt-2 text-gray-300 w-full ${isEdit && "bg-[#1c1c1c]"
+                        }`}
                     />
                   </div>
                 </div>
@@ -860,7 +853,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                   <div className="col-span-8">
                     <div className="w-full h-6 bg-[rgba(45,45,45,0.6)] px-3 flex items-center">
                       <p className="text-sm font-semibold text-gray-300">
-                      Vefsíða
+                        Vefsíða
                       </p>
                     </div>
 
@@ -870,9 +863,8 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                       name="website"
                       type="text"
                       readOnly="true"
-                      className={`bg-transparent outline-none border-none text-xs px-3 mt-2 text-gray-300 w-full ${
-                        isEdit && "bg-[#1c1c1c]"
-                      }`}
+                      className={`bg-transparent outline-none border-none text-xs px-3 mt-2 text-gray-300 w-full ${isEdit && "bg-[#1c1c1c]"
+                        }`}
                     />
                   </div>
                 </div>
@@ -881,14 +873,13 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                   <div className="col-span-8">
                     <div className="w-full h-6 bg-[rgba(45,45,45,0.6)] px-3 flex items-center">
                       <p className="text-sm font-semibold text-gray-300">
-                      Heimilisfang
+                        Heimilisfang
                       </p>
                     </div>
                     <textarea
                       readOnly="true"
-                      className={`text-xs text-gray-300 mt-2 px-3  w-full  outline-none border-none ${
-                        isEdit ? "bg-[#1c1c1c]" : "bg-transparent"
-                      }`}
+                      className={`text-xs text-gray-300 mt-2 px-3  w-full  outline-none border-none ${isEdit ? "bg-[#1c1c1c]" : "bg-transparent"
+                        }`}
                       name="address"
                       value={formData.address}
                       onChange={handleChange}
@@ -903,16 +894,31 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                 </div>
               </div>
             </div>
-           
-           
-           
-           
+
+<div class="font-dm-sans">
+  This text uses DM Sans.
+</div>
+
+<div class="font-courier-prime">
+  This text uses Courier Prime.
+</div>
+
+<div class="font-cooper-bt">
+  This text uses Cooper-bT.
+</div>
+
+<div class="font-cooper-bt-bold">
+  This text uses Cooper-bt-bold.
+</div>
+
+
+
             <div className={`col-span-8 flex flex-col items-center justify-start py-6 bg-white ml-8 ${isVisible ? 'block' : 'hidden'}`}>
 
-              <div className="w-full py-6"></div>
-             
-             
-             
+              <div className="w-full py-4"></div>
+
+
+
               <div className="w-full px-8 py-6 bg-yellow-500 ">
                 <div className="flex items-center justify-start ">
                   <input
@@ -921,25 +927,23 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                     name="fullname"
                     value={formData.fullname}
                     onChange={handleChange}
-                    className={`bg-transparent outline-none border-none text-3xl font-sans uppercase tracking-wider text-txtDark font-extrabold ${
-                      isEdit && "text-white w-full"
-                    }`}
+                    className={`bg-transparent outline-none border-none text-[20px] font-sans uppercase tracking-wider text-txtDark w-full font-bold ${isEdit && "text-white w-full"
+                      }`}
                   />
                 </div>
                 <div className="flex items-center space-x-2">
-  <LiaBirthdayCakeSolid />
-  
-  <input
-    value={formData.birth}
-    onChange={handleChange}
-    name="birth"
-    type="date"
-    readOnly="true"
-    className={`bg-transparent outline-none border-none text-xl tracking-widest uppercase text-txtPrimary w-full ${
-      isEdit && "text-white"
-    }`}
-  />
-</div>
+                  <LiaBirthdayCakeSolid />
+
+                  <input
+                    value={formData.birth}
+                    onChange={handleChange}
+                    name="birth"
+                    type="name"
+                    readOnly="true"
+                    className={`bg-transparent outline-none border-none text-xl tracking-widest uppercase text-txtPrimary w-full ${isEdit && "text-white"
+                      }`}
+                  />
+                </div>
 
                 <input
                   value={formData.professionalTitle}
@@ -947,9 +951,8 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                   name="professionalTitle"
                   type="text"
                   readOnly="true"
-                  className={`bg-transparent outline-none border-none text-xl tracking-widest uppercase text-txtPrimary w-full ${
-                    isEdit && "text-white"
-                  }`}
+                  className={`bg-transparent outline-none border-none text-xl tracking-widest uppercase text-txtPrimary w-full ${isEdit && "text-white"
+                    }`}
                 />
               </div>
 
@@ -957,17 +960,16 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
 
 
               <div className="w-full px-8 py-6 flex flex-col items-start justify-start gap-6">
-               
-               
-               
+
+
+
                 <div className="w-full">
                   <p className="uppercase text-xl tracking-wider">Um mig</p>
                   <div className="w-full h-1 bg-yellow-900 my-3"></div>
                   <textarea
                     readOnly="true"
-                    className={`text-base text-txtPrimary tracking-wider w-full  outline-none border-none ${
-                      isEdit ? "bg-gray-200" : "bg-transparent"
-                    }`}
+                    className={`text-base text-txtPrimary tracking-wider w-full  outline-none border-none ${isEdit ? "bg-gray-200" : "bg-transparent"
+                      }`}
                     name="personalDescription"
                     value={formData.personalDescription}
                     onChange={handleChange}
@@ -987,7 +989,7 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
 
                 <div className="w-full">
                   <p className="uppercase text-xl tracking-wider">
-                  Starfsreynsla
+                    Starfsreynsla
                   </p>
                   <div className="w-full h-1 bg-yellow-900 my-3"></div>
                   <div className="w-full flex flex-col items-center justify-start gap-4">
@@ -1006,9 +1008,8 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                                 name="year"
                                 type="text"
                                 readOnly="true"
-                                className={` outline-none border-none text-base tracking-eide uppercase text-txtDark w-full ${
-                                  isEdit ? "bg-gray-200" : "bg-transparent"
-                                }`}
+                                className={` outline-none border-none text-base tracking-eide uppercase text-txtDark w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
+                                  }`}
                               />
                             </div>
                             <div className="col-span-8 relative">
@@ -1029,9 +1030,8 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                                 name="title"
                                 type="text"
                                 readOnly="true"
-                                className={` outline-none border-none font-sans text-lg tracking-wide capitalize text-txtDark w-full ${
-                                  isEdit ? "bg-gray-200" : "bg-transparent"
-                                }`}
+                                className={` outline-none border-none font-sans text-lg tracking-wide capitalize text-txtDark w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
+                                  }`}
                               />
 
                               <input
@@ -1040,15 +1040,13 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                                 name="companyAndLocation"
                                 type="text"
                                 readOnly="true"
-                                className={` outline-none border-none text-sm tracking-wide capitalize text-txtPrimary w-full ${
-                                  isEdit ? "bg-gray-200" : "bg-transparent"
-                                }`}
+                                className={` outline-none border-none text-sm tracking-wide capitalize text-txtPrimary w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
+                                  }`}
                               />
                               <textarea
                                 readOnly="true"
-                                className={`text-xs mt-4  text-txtPrimary tracking-wider w-full  outline-none border-none ${
-                                  isEdit ? "bg-gray-200" : "bg-transparent"
-                                }`}
+                                className={`text-xs mt-4  text-txtPrimary tracking-wider w-full  outline-none border-none ${isEdit ? "bg-gray-200" : "bg-transparent"
+                                  }`}
                                 name="description"
                                 value={exp.description}
                                 onChange={(e) => handleExpChange(i, e)}
@@ -1098,13 +1096,12 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                               <div className="flex items-center justify-center">
                                 <input
                                   value={skill.title}
-                                 
+
                                   name="title"
                                   type="text"
                                   readOnly="true"
-                                  className={` outline-none border-none text-base tracking-wide capitalize font-semibold text-txtPrimary w-full ${
-                                    isEdit ? "bg-gray-200" : "bg-transparent"
-                                  }`}
+                                  className={` outline-none border-none text-base tracking-wide capitalize font-semibold text-txtPrimary w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
+                                    }`}
                                 />
 
                                 <AnimatePresence>
@@ -1112,14 +1109,13 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
                                     <motion.input
                                       {...FadeInOutWIthOpacity}
                                       value={skill.percentage}
-                                      
+
                                       name="percentage"
                                       type="text"
-                                      className={` outline-none border-none text-base tracking-wide capitalize font-semibold text-txtPrimary w-full ${
-                                        isEdit
+                                      className={` outline-none border-none text-base tracking-wide capitalize font-semibold text-txtPrimary w-full ${isEdit
                                           ? "bg-gray-200"
                                           : "bg-transparent"
-                                      }`}
+                                        }`}
                                     />
                                   )}
                                 </AnimatePresence>
@@ -1168,41 +1164,40 @@ const Template1 = ({ formData, experiences, education, skills,Languages }) => {
 
 
 
-{/* Languages Section */}
-<div className="w-full">
-  <p className="uppercase text-xl tracking-wider">Tungumál</p>
-  <div className="w-full h-1 bg-yellow-900 my-3"></div>
-  <div className="w-full flex flex-wrap items-center justify-start gap-4">
-    <AnimatePresence>
-      {Languages &&
-        Languages.map((Language, i) => (
-          <motion.div
-            key={i}
-            {...opacityINOut(i)}
-            className="flex-1"
-            style={{ minWidth: 225 }}
-          >
-            <div className="w-full flex items-center justify-between">
-              <div className="flex items-center justify-center">
-                <input
-                  value={Language.title}
-                 
-                  name="title"
-                  type="text"
-                  readOnly={true}
-                  className={`outline-none border-none text-base tracking-wide capitalize font-semibold text-txtPrimary w-full ${
-                    isEdit ? "bg-gray-200" : "bg-transparent"
-                  }`}
-                />
-              </div>
+                {/* Languages Section */}
+                <div className="w-full">
+                  <p className="uppercase text-xl tracking-wider">Tungumál</p>
+                  <div className="w-full h-1 bg-yellow-900 my-3"></div>
+                  <div className="w-full flex flex-wrap items-center justify-start gap-4">
+                    <AnimatePresence>
+                      {Languages &&
+                        Languages.map((Language, i) => (
+                          <motion.div
+                            key={i}
+                            {...opacityINOut(i)}
+                            className="flex-1"
+                            style={{ minWidth: 225 }}
+                          >
+                            <div className="w-full flex items-center justify-between">
+                              <div className="flex items-center justify-center">
+                                <input
+                                  value={Language.title}
 
-             
-            </div>
-          </motion.div>
-        ))}
-    </AnimatePresence>
-  </div>
-</div>
+                                  name="title"
+                                  type="text"
+                                  readOnly={true}
+                                  className={`outline-none border-none text-base tracking-wide capitalize font-semibold text-txtPrimary w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
+                                    }`}
+                                />
+                              </div>
+
+
+                            </div>
+                          </motion.div>
+                        ))}
+                    </AnimatePresence>
+                  </div>
+                </div>
 
 
 

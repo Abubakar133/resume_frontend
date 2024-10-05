@@ -21,8 +21,10 @@ module.exports = {
       },
       spacing: {},
       fontFamily: {
-        bold1: "'DM Sans'",
-        "courier-prime": "'Courier Prime'",
+        'dm-sans': ['DM Sans', 'sans-serif'],
+        'courier-prime': ['Courier Prime', 'monospace'],
+        'cooper-bt': ['Cooper-bT', 'sans-serif'],
+        'cooper-bt-bold': ['Cooper-bt-bold', 'sans-serif'],
       },
       borderRadius: {
         "10xs": "3px",

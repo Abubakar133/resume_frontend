@@ -12,3 +12,28 @@ body {
 ::after {
   border-width: 0;
 }
+@font-face {
+  font-family: 'Cooper-bT';
+  src: url('/Cooper.ttf') format('truetype'); /* Adjusted to point directly from public folder */
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'Cooper-bt-bold';
+  src: url('/CooperBT-Bold.otf') format('truetype'); /* Adjust the path if necessary */
+  font-weight: bold; /* Bold variant */
+  font-style: normal;
+}
+
+
+/* Tailwind CSS Utilities */
+.font-cooper-bt {
+  font-family: 'Cooper-bT', sans-serif;
+}
+
+.font-cooper-bt-bold {
+  font-family: 'Cooper-bt-bold', sans-serif;
+}

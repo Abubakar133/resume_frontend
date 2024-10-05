@@ -41,10 +41,10 @@ const PdfPreviewPage = () => {
 
   return (
     <div className="container mx-auto p-4 mt-10 lg:mt-0 ">
-            <h1 className="text-3xl font-bold mb-4 text-blue-600">Welcome to Your Dashboard</h1>
-      <p className="text-lg mb-4 text-orange-500">Here you can view and manage all your saved CVs.</p>
+            <h1 className="text-3xl font-bold font-cooper-bt-bold mb-4 text-blue-600">Welcome to Your Dashboard</h1>
+      <p className="text-lg mb-4 font-cooper-bt-bold text-orange-500">Here you can view and manage all your saved CVs.</p>
       
-      {error && <div className="text-red-500 mb-4">{error}</div>}
+      {error && <div className="text-red-500 mb-4 font-cooper-bt">{error}</div>}
       {loading && <div>Loading PDFs...</div>}
 
       
@@ -64,7 +64,7 @@ const PdfPreviewPage = () => {
                 height="100%"
                 title={`PDF Thumbnail ${index + 1}`}
                 frameBorder="0"
-                className="border rounded"
+                className="border rounded "
               />
               <a 
                 href={pdf.url} 
@@ -74,11 +74,7 @@ const PdfPreviewPage = () => {
                 onClick={(e) => e.stopPropagation()} // Prevent link from opening on image click
               />
             </div>
-            <div className="text-center mt-2">
-              <a href={pdf.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
-                View Full PDF
-              </a>
-            </div>
+           
           </div>
         ))}
       </div>
