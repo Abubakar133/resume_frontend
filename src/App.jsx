@@ -16,6 +16,9 @@ import UploadComponent from './pages/selectfile'
 
 
 function App() {
+  window.Login = Login;
+
+  // Your main render logic
  
 
   return (
