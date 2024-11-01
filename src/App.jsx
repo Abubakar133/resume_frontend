@@ -10,10 +10,10 @@ import { Signup } from "./pages/Signup";
 import Dashboard1 from './pages/Dashboard';
 import Dashboard2 from './pages/Dashboard2';
 import Success from './Dashboard_components/success';
-import Home from './pages/BlogIframe'
-import {Forget} from './pages/forgetpassword'
-import UploadComponent from './pages/selectfile'
-
+import Home from './pages/BlogIframe';
+import {Forget} from './pages/forgetpassword';
+import UploadComponent from './pages/selectfile';
+import IframeViewer from './Dashboard_components/IframeViewer';
 
 function App() {
   window.Login = Login;
@@ -31,6 +31,13 @@ function App() {
       <Route path="/Success" element={<Success />} />
       <Route path="/forget" element={<Forget />} />
       <Route path="/file" element={<UploadComponent  />} />
+      <Route path="/:pageId" element={<IframeViewer />} />
+     
+
+      {/* Optional fallback for an unknown iframe ID */}
+      <Route path="*" element={<div>404 Page Not Found</div>} />
+ 
+      
 
      
     </Routes>

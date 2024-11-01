@@ -31,7 +31,7 @@ const Footer = () => {
         </Grid>
 
         {/* Column 2 */}
-        <Grid item xs={12} sm={6} md={2}>
+        {/* <Grid item xs={12} sm={6} md={2}>
           <Typography
             variant="h6"
             style={{
@@ -44,11 +44,17 @@ const Footer = () => {
             Stefnur & Skilmálar
           </Typography>
           <List>
-            <ListItem style={{ padding: '5px 0' }}>Endurgreiðslustefna</ListItem>
-            <ListItem style={{ padding: '5px 0' }}>Persónuverndarstefna</ListItem>
-            <ListItem style={{ padding: '5px 0' }}>Skilmálar</ListItem>
-          </List>
-        </Grid>
+      <ListItem style={{ padding: '5px 0' }}>
+        <a href="/endurgreidsluste" target="_blank" rel="noopener noreferrer">Endurgreiðslustefna</a>
+      </ListItem>
+      <ListItem style={{ padding: '5px 0' }}>
+        <a href="/personuverndarstefna.html" target="_blank" rel="noopener noreferrer">Persónuverndarstefna</a>
+      </ListItem>
+      <ListItem style={{ padding: '5px 0' }}>
+        <a href="/skilmalar.html" target="_blank" rel="noopener noreferrer">Skilmálar</a>
+      </ListItem>
+    </List>
+        </Grid> */}
 
         {/* Column 3 */}
         <Grid item xs={12} sm={6} md={2}>

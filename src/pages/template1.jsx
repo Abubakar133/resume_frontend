@@ -609,7 +609,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                 ) : (
                   <FaPencil className="text-sm text-txtPrimary" />
                 )}
-                <p className="text-sm text-txtPrimary">Fáðu áskrift</p>
+                <p className="text-sm text-txtPrimary font-cooper-bt">Fáðu áskrift</p>
               </div>
             )}
 
@@ -619,7 +619,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
               onClick={handleIconClick} // Handle div click to trigger file input
             >
               <BiSolidBookmarks className="text-sm text-txtPrimary" />
-              <p className="text-sm text-txtPrimary">hlaða upp í ský</p>
+              <p className="text-sm text-txtPrimary font-cooper-bt">hlaða upp í ský</p>
 
               {/* Hidden file input for selecting PDF files */}
               <input
@@ -633,7 +633,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
 
             {/* Download Section */}
             <div className="flex flex-wrap items-center justify-center gap-2">
-              <p className="text-sm text-txtPrimary">Sækja : </p>
+              <p className="text-sm text-txtPrimary font-cooper-bt">Sækja : </p>
               <BsFiletypePdf
                 className="text-xl md:text-2xl text-txtPrimary cursor-pointer"
                 onClick={generatePDF}
@@ -708,7 +708,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
               <div className={`w-full flex flex-col items-center justify-start pl-0 mt-4 gap-6  ${isVisible ? 'block' : 'hidden'}`}>
 
                 <div className="w-full">
-                  <p className="uppercase text-lg font-semibold text-gray-300 ml-4">
+                  <p className="uppercase text-lg font-semibold text-gray-300 ml-4 font-cooper-bt">
                     Menntun
                   </p>
                   <div className="w-full h-[2px] bg-yellow-400"></div>
@@ -770,7 +770,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                   </motion.div>
                 )}
                 <div className="w-full">
-                  <p className="bg-transparent uppercase text-lg font-semibold text-gray-300 ml-4">
+                  <p className="bg-transparent uppercase text-lg font-semibold text-gray-300 ml-4 font-cooper-bt">
                     Tilvísun
                   </p>
                   <div className="w-full h-[2px] bg-yellow-400 mt-2"></div>
@@ -814,7 +814,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                   <div className="col-span-3 w-full h-6 bg-yellow-400"></div>
                   <div className="col-span-8">
                     <div className="w-full h-6 bg-[rgba(45,45,45,0.6)] px-3 flex items-center">
-                      <p className="text-sm font-semibold text-gray-300">
+                      <p className="text-sm font-semibold text-gray-300 font-cooper-bt">
                         Sími
                       </p>
                     </div>
@@ -833,7 +833,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                   <div className="col-span-3 w-full h-6 bg-yellow-400"></div>
                   <div className="col-span-8">
                     <div className="w-full h-6 bg-[rgba(45,45,45,0.6)] px-3 flex items-center">
-                      <p className="text-sm font-semibold text-gray-300">
+                      <p className="text-sm font-semibold text-gray-300 font-cooper-bt">
                         Netfang
                       </p>
                     </div>
@@ -852,7 +852,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                   <div className="col-span-3 w-full h-6 bg-yellow-400"></div>
                   <div className="col-span-8">
                     <div className="w-full h-6 bg-[rgba(45,45,45,0.6)] px-3 flex items-center">
-                      <p className="text-sm font-semibold text-gray-300">
+                      <p className="text-sm font-semibold text-gray-300 font-cooper-bt">
                         Vefsíða
                       </p>
                     </div>
@@ -872,7 +872,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                   <div className="col-span-3 w-full h-6 bg-yellow-400"></div>
                   <div className="col-span-8">
                     <div className="w-full h-6 bg-[rgba(45,45,45,0.6)] px-3 flex items-center">
-                      <p className="text-sm font-semibold text-gray-300">
+                      <p className="text-sm font-semibold text-gray-300 font-cooper-bt">
                         Heimilisfang
                       </p>
                     </div>
@@ -949,7 +949,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
 
 
                 <div className="w-full">
-                  <p className="uppercase text-xl tracking-wider">Um mig</p>
+                  <p className="uppercase text-xl tracking-wider font-cooper-bt">Um mig</p>
                   <div className="w-full h-1 bg-yellow-900 my-3"></div>
                   <textarea
                     readOnly="true"
@@ -973,7 +973,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
 
 
                 <div className="w-full">
-                  <p className="uppercase text-xl tracking-wider">
+                  <p className="uppercase text-xl tracking-wider font-cooper-bt">
                     Starfsreynsla
                   </p>
                   <div className="w-full h-1 bg-yellow-900 my-3"></div>
@@ -1065,7 +1065,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
 
                 {/* skills */}
                 <div className="w-full">
-                  <p className="uppercase text-xl tracking-wider">Færni</p>
+                  <p className="uppercase text-xl tracking-wider font-cooper-bt">Færni</p>
                   <div className="w-full h-1 bg-yellow-900 my-3"></div>
                   <div className="w-full flex flex-wrap items-center justify-start gap-4">
                     <AnimatePresence>
@@ -1151,7 +1151,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
 
                 {/* Languages Section */}
                 <div className="w-full">
-                  <p className="uppercase text-xl tracking-wider">Tungumál</p>
+                  <p className="uppercase text-xl tracking-wider font-cooper-bt">Tungumál</p>
                   <div className="w-full h-1 bg-yellow-900 my-3"></div>
                   <div className="w-full flex flex-wrap items-center justify-start gap-4">
                     <AnimatePresence>
