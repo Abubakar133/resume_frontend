@@ -780,37 +780,104 @@ Spjallaðu við okkur
 
 							<input type="hidden" name="queried_id" value="28">
 			
-			<div class="elementor-form-fields-wrapper elementor-labels-above">
-				<div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100 elementor-field-required">
-												<label for="form-field-field_55064e3" class="elementor-field-label">
-								Name							</label>
-														<input size="1" type="text" name="form_fields[field_55064e3]" id="form-field-field_55064e3" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="Name" required="required" aria-required="true" aria-invalid="false">
-											</div>
-								
-								<div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100 elementor-field-required">
-												<label for="form-field-email" class="elementor-field-label">
-								Email							</label>
-														<input size="1" type="email" name="form_fields[email]" id="form-field-email" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="Email" required="required" aria-required="true" aria-invalid="false">
-											</div>
-								<div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-message elementor-col-100 elementor-field-required">
-												<label for="form-field-message" class="elementor-field-label">
-								Message							</label>
-						<textarea class="elementor-field-textual elementor-field  elementor-size-sm" name="form_fields[message]" id="form-field-message" rows="4" placeholder="Message" required="required" aria-required="true" aria-invalid="false"></textarea>				</div>
-								<div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
-					<button class="elementor-button elementor-size-sm" type="submit" aria-invalid="false">
-						<span class="elementor-button-content-wrapper">
-																						<span class="elementor-button-text">Send</span>
-													</span>
-					</button>
-				</div>
-			</div>
+
+
+
+
+
+							<div class="elementor-form-fields-wrapper elementor-labels-above">
+  <div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-name elementor-col-100 elementor-field-required">
+    <label for="form-field-name" class="elementor-field-label">Name</label>
+    <input size="1" type="text" id="form-field-name" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Name" required="required" aria-required="true" aria-invalid="false">
+  </div>
+  
+  <div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100 elementor-field-required">
+    <label for="form-field-email" class="elementor-field-label">Email</label>
+    <input size="1" type="email" id="form-field-email" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Email" required="required" aria-required="true" aria-invalid="false">
+  </div>
+
+  <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-message elementor-col-100 elementor-field-required">
+    <label for="form-field-message" class="elementor-field-label">Message</label>
+    <textarea class="elementor-field-textual elementor-field elementor-size-sm" id="form-field-message" rows="4" placeholder="Message" required="required" aria-required="true" aria-invalid="false"></textarea>
+  </div>
+  
+  <div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
+    <button class="elementor-button elementor-size-sm" type="button" id="send-button" aria-invalid="false">
+      <span class="elementor-button-content-wrapper">
+        <span class="elementor-button-text">Send</span>
+      </span>
+    </button>
+  </div>
+</div>
+
+<div id="feedback-alert" class=" elementor-message-success " role="alert" style="display: none;"></div>
+
+			<script>
+  document.getElementById("send-button").addEventListener("click", async () => {
+    const name = document.getElementById("form-field-name").value;
+    const email = document.getElementById("form-field-email").value;
+    const message = document.getElementById("form-field-message").value;
+	const feedbackAlert = document.getElementById("feedback-alert");
+
+    // Clear previous alert content and hide the alert initially
+    feedbackAlert.style.display = "none";
+    feedbackAlert.textContent = "";
+	
+ 
+    if (!name || !email || !message) {
+      feedbackAlert.style.display = "block";
+      feedbackAlert.textContent = "Please fill in all fields";
+      feedbackAlert.style.color = "red";
+      return;
+    }
+	
+	const baseURL = localStorage.getItem('BASE_URL');
+	
+    try {
 		
-		
-		
+		const response = await fetch(`${baseURL}/auth/feedback`, { 
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message })
+      });
+
+      const data = await response.json();
+	  feedbackAlert.style.display = "block";
+
+     if (data.success) {
+        feedbackAlert.textContent = "Your message was sent successfully.";
+        
+        feedbackAlert.classList.add("elementor-message");
+		feedbackAlert.classList.add("elementor-message-svg");
+		feedbackAlert.style.color = "green"; 
+      } else {
+		feedbackAlert.textContent = "Your message was sent successfully.";
+        
+        feedbackAlert.classList.add("elementor-message");
+		feedbackAlert.classList.add("elementor-message-svg");
+		feedbackAlert.style.color = "green"; 
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      feedbackAlert.style.display = "block";
+      feedbackAlert.textContent = "An error occurred while sending feedback.";
+      feedbackAlert.classList.remove("elementor-message-success");
+      feedbackAlert.classList.add("elementor-message-error");
+	  feedbackAlert.style.color = "red";
+    }
+  });
+  
+</script>
 		
 		</form>
 				</div>
 				</div>
+
+
+
+
+
+
 				</div>
 		<div class="elementor-element elementor-element-827faea e-con-full e-flex e-con e-child" data-id="827faea" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 				<div class="elementor-element elementor-element-be5963e elementor-widget elementor-widget-spacer" data-id="be5963e" data-element_type="widget" data-widget_type="spacer.default">

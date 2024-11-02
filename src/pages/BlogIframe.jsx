@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Login } from "./Login"; // Import the login component
 import { Signup } from "./Signup"; 
 import { toast } from 'react-toastify';
-
+import { BASE_URL } from "../config";
 const BlogIframe = () => {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showSignupPopup, setShowSignupPopup] = useState(false);
@@ -15,6 +15,8 @@ const BlogIframe = () => {
 
   useEffect(() => {
     // Listen for messages from the iframe
+
+    localStorage.setItem('BASE_URL', BASE_URL);
     const handleMessage = (event) => {
       if (event.data && event.data.action === 'openLoginPopup') {
         setShowLoginPopup(true); // Show the login popup when the message is received
