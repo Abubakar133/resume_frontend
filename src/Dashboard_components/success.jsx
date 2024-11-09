@@ -12,7 +12,7 @@ const Success = () => {
     const params = new URLSearchParams(location.search);
     const status = params.get('status');
     
-    const userId = localStorage.getItem("userId");
+    const userId = localStorage.getItem("userIdf");
     if (userId) {
       // Call your API to update the user's subscription status
 
@@ -28,6 +28,7 @@ const Success = () => {
 
           if (response.status === 200) {
             setSubscriptionUpdated(true);
+            localStorage.setItem("userIdf", "null");
           } else {
             throw new Error('Failed to update subscription');
           }

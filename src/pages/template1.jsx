@@ -62,21 +62,47 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
 
   useEffect(() => {
 
-    checkSubscriptionStatus();
-    // Check the screen width once when the component is first rendered
+    const intervalId = setInterval(() => {
+      checkSubscriptionStatus();
+  }, 1000);
+    
     if (window.innerWidth <= 550) {
-      toggle(false); // Call the toggle function with false if the width is less than or equal to 550px
+      toggle(false); 
     } else if (window.innerWidth > 550) {
-      toggle(true); // Call the toggle function with true if the width is greater than 550px
+      toggle(true); 
     }
+    return () => clearInterval(intervalId);
   }, []);
   const fileInputRefs = useRef([]);
 
 
   const handleIconClick = () => {
-    fileInputRefs.current.click(); // Trigger file input click for the specific row
+    fileInputRefs.current.click(); 
   };
 
+
+  const updateSubscription = async () => {
+    const userId = localStorage.getItem("userId");
+
+    try {
+      const response = await axios.post(`${BASE_URL}/update-subscription2`, {
+        userId, 
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.status === 200) {
+        setSubscriptionUpdated(false);
+      } else {
+        throw new Error('Failed to update subscription');
+      }
+    } catch (error) {
+      setError(error.response?.data?.error || error.message);
+      console.error('Error updating subscription:', error);
+    }
+  };
 
   const generatePDF2 = () => {
     const element = resumeRef.current;
@@ -160,7 +186,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
       // });
       const checkoutUrl = session.checkoutData.redirect_url;
         if (checkoutUrl) {
-          localStorage.setItem("userId", userId);
+          localStorage.setItem("userIdf", userId);
 
            window.open(checkoutUrl, '_blank'); // Open in a new tab
             checkSubscriptionStatus();
@@ -188,7 +214,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
       });
 
       if (response.data.isActive) {
-        // Display remaining days to the user
+        
         setSubscriptionUpdated(true);
         setRemainingDays(response.data.remainingDays);
 
@@ -222,18 +248,16 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
       try {
         const uploadResponse = await uploadImageToCloudinarypdf(file);
         const pdfUrl = uploadResponse.secure_url;
-        //const pdfUrl = "ajaghuy";
-
-        // Log the user ID to confirm it's retrieved correctly
+       
         console.log("User ID:", userId);
 
-        // Make the API request to upload PDF link
+       
         const response = await axios.post(`${BASE_URL}/userdata/upload_pdf/`, {
           userId: userId,
           pdflink: pdfUrl,
         });
 
-        // Check response
+       
         if (response.status === 200) {
           toast.success("PDF uploaded and updated successfully");
         } else {
@@ -472,13 +496,14 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
             const imgHeight = (clone.offsetHeight * imgWidth) / clone.offsetWidth;
             pdf.addImage(dataUrl, 'PNG', 0, 0, imgWidth, imgHeight);
             pdf.save('resume.pdf');
-
+           
             // Cleanup
             document.body.removeChild(clone);
             if (window.innerWidth < 550) {
               toggle(false);
 
             }
+            updateSubscription();
           })
           .catch((error) => {
             console.error('Error generating PDF1:', error);
@@ -565,6 +590,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    
   };
 
   // Convert PNG Data URL to JPG Data URL
@@ -583,6 +609,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
 
       const jpgDataUrl = canvas.toDataURL('image/jpeg', 1.0); // Convert to JPG
       downloadImage(jpgDataUrl, filename);
+      updateSubscription();
     };
   };
 
