@@ -803,7 +803,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                 )}
                 <div className="w-full">
                   <p className="bg-transparent uppercase text-lg font-semibold text-gray-300 ml-4 font-cooper-bt">
-                    Tilvísun
+                  Meðmæli 
                   </p>
                   <div className="w-full h-[2px] bg-yellow-400 mt-2"></div>
                   <div className="w-full pl-4 mt-3">
