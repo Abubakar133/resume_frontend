@@ -154,16 +154,21 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
 
       const session = response.data;
 
-      // Redirect to Stripe Checkout
-      const { error } = await stripe.redirectToCheckout({
-        sessionId: session.id,
-      });
+    
+      // const { error } = await stripe.redirectToCheckout({
+      //   sessionId: session.id,
+      // });
+      const checkoutUrl = session.checkoutData.redirect_url;
+        if (checkoutUrl) {
+          localStorage.setItem("userId", userId);
 
-      if (error) {
-        console.error('Stripe Checkout Error:', error);
-      }
+           window.open(checkoutUrl, '_blank'); // Open in a new tab
+            checkSubscriptionStatus();
+        } else {
+            console.error('Checkout URL not found in the session data');
+        }
     } catch (error) {
-      console.error('Error creating checkout session:', error);
+        console.error('Error creating checkout session:', error);
     }
   };
 

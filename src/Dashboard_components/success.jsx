@@ -11,12 +11,11 @@ const Success = () => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const status = params.get('status');
-    const userId = params.get('userId');
-
-    if (status === 'success' && userId) {
+    
+    const userId = localStorage.getItem("userId");
+    if (userId) {
       // Call your API to update the user's subscription status
 
-      
       const updateSubscription = async () => {
         try {
           const response = await axios.post(`${BASE_URL}/update-subscription`, {
