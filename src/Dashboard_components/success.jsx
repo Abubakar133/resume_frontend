@@ -44,11 +44,11 @@ const Success = () => {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      
       {subscriptionUpdated && (
-        <div className="success-message">
+        <div className="success-message m-5" >
           <h2>Payment Successful!</h2>
-          <p>Your subscription has been successfully activated! <br/> You can now download one resume with this payment.<br/> This access is valid for 30 days, meaning you have 30 days to download a single resume.<br/> Once you've downloaded it, any additional downloads will require a new payment.</p>
+          <p>Your subscription has been successfully activated! <br/> You can now go To Main Page and download one resume with this payment.<br/> This access is valid for 30 days, meaning you have 30 days to download a single resume.<br/> Once you've downloaded it, any additional downloads will require a new payment.</p>
         </div>
       )}
       {error && (
