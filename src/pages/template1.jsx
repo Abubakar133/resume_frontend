@@ -762,13 +762,13 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                           name="major"
                           value={edu.major}
                           onChange={(e) => handleEducationChange(i, e)}
-                          className={`bg-transparent outline-none border-none text-sm font-semibold uppercase  text-gray-300  ${isEdit && "text-yellow-900 w-full"
+                          className={`bg-transparent outline-none font-cooper-bt border-none text-sm font-semibold uppercase  text-gray-300  ${isEdit && "text-yellow-900 w-full"
                             }`}
                         />
 
                         <textarea
                           readOnly="true"
-                          className={`text-xs text-gray-300 mt-2  w-full  outline-none border-none ${isEdit ? "bg-[#1c1c1c]" : "bg-transparent"
+                          className={`text-xs text-gray-300 mt-2 font-cooper-bt  w-full  outline-none border-none ${isEdit ? "bg-[#1c1c1c]" : "bg-transparent"
                             }`}
                           name="university"
                           value={edu.university}
@@ -818,7 +818,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                       name="refererName"
                       type="text"
                       readOnly="true"
-                      className={`bg-transparent outline-none border-none text-base tracking-widest capitalize text-gray-300 w-full ${isEdit && "bg-[#1c1c1c]"
+                      className={`bg-transparent outline-none font-cooper-bt border-none text-base tracking-widest capitalize text-gray-300 w-full ${isEdit && "bg-[#1c1c1c]"
                         }`}
                     />
                     <input
@@ -827,7 +827,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                       name="refererRole"
                       type="text"
                       readOnly="true"
-                      className={`bg-transparent outline-none border-none text-xs capitalize text-gray-300 w-full ${isEdit && "bg-[#1c1c1c]"
+                      className={`bg-transparent outline-none font-cooper-bt border-none text-xs capitalize text-gray-300 w-full ${isEdit && "bg-[#1c1c1c]"
                         }`}
                     />
                     <input
@@ -836,7 +836,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                       name="refemail"
                       type="email"
                       readOnly="true"
-                      className={`bg-transparent outline-none border-none text-xs capitalize text-gray-300 w-full ${isEdit && "bg-[#1c1c1c]"
+                      className={`bg-transparent outline-none font-cooper-bt border-none text-xs  text-gray-300 w-full ${isEdit && "bg-[#1c1c1c]"
                         }`}
                     />
                   </div>
@@ -915,7 +915,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                     </div>
                     <textarea
                       readOnly="true"
-                      className={`text-xs text-gray-300 mt-2 px-3  w-full  outline-none border-none ${isEdit ? "bg-[#1c1c1c]" : "bg-transparent"
+                      className={`text-xs text-gray-300 mt-2 px-3 font-cooper-bt  w-full  outline-none border-none ${isEdit ? "bg-[#1c1c1c]" : "bg-transparent"
                         }`}
                       name="address"
                       value={formData.address}
@@ -949,7 +949,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                     name="fullname"
                     value={formData.fullname}
                     onChange={handleChange}
-                    className={`bg-transparent outline-none border-none text-[20px] font-sans uppercase tracking-wider text-txtDark w-full font-bold ${isEdit && "text-white w-full"
+                    className={`bg-transparent outline-none font-cooper-bt border-none text-[20px] font-sans uppercase tracking-wider text-txtDark w-full font-bold ${isEdit && "text-white w-full"
                       }`}
                   />
                 </div>
@@ -962,7 +962,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                     name="birth"
                     type="name"
                     readOnly="true"
-                    className={`bg-transparent outline-none border-none text-xl tracking-widest uppercase text-txtPrimary w-full ${isEdit && "text-white"
+                    className={`bg-transparent outline-none font-cooper-bt border-none text-xl tracking-widest uppercase text-txtPrimary w-full ${isEdit && "text-white"
                       }`}
                   />
                 </div>
@@ -973,7 +973,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                   name="professionalTitle"
                   type="text"
                   readOnly="true"
-                  className={`bg-transparent outline-none border-none text-xl tracking-widest uppercase text-txtPrimary w-full ${isEdit && "text-white"
+                  className={`bg-transparent outline-none font-cooper-bt border-none text-xl tracking-widest uppercase text-txtPrimary w-full ${isEdit && "text-white"
                     }`}
                 />
               </div>
@@ -990,7 +990,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                   <div className="w-full h-1 bg-yellow-900 my-3"></div>
                   <textarea
                     readOnly="true"
-                    className={`text-base text-txtPrimary tracking-wider w-full  outline-none border-none ${isEdit ? "bg-gray-200" : "bg-transparent"
+                    className={`text-base text-txtPrimary font-cooper-bt tracking-wider w-full  outline-none border-none ${isEdit ? "bg-gray-200" : "bg-transparent"
                       }`}
                     name="personalDescription"
                     value={formData.personalDescription}
@@ -1030,7 +1030,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                                 name="year"
                                 type="text"
                                 readOnly="true"
-                                className={` outline-none border-none text-base tracking-eide uppercase text-txtDark w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
+                                className={` outline-none border-none text-base font-cooper-bt tracking-eide uppercase text-txtDark w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
                                   }`}
                               />
                             </div>
@@ -1052,7 +1052,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                                 name="title"
                                 type="text"
                                 readOnly="true"
-                                className={` outline-none border-none font-sans text-lg tracking-wide capitalize text-txtDark w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
+                                className={` outline-none border-none  text-lg font-cooper-bt  capitalize text-txtDark w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
                                   }`}
                               />
 
@@ -1062,12 +1062,12 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                                 name="companyAndLocation"
                                 type="text"
                                 readOnly="true"
-                                className={` outline-none border-none text-sm tracking-wide capitalize text-txtPrimary w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
+                                className={` outline-none border-none text-sm font-cooper-bt tracking-wide capitalize text-txtPrimary w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
                                   }`}
                               />
                               <textarea
                                 readOnly="true"
-                                className={`text-xs mt-4  text-txtPrimary tracking-wider w-full  outline-none border-none ${isEdit ? "bg-gray-200" : "bg-transparent"
+                                className={`text-xs mt-4 font-cooper-bt  text-txtPrimary tracking-wider w-full  outline-none border-none ${isEdit ? "bg-gray-200" : "bg-transparent"
                                   }`}
                                 name="description"
                                 value={exp.description}
@@ -1122,7 +1122,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                                   name="title"
                                   type="text"
                                   readOnly="true"
-                                  className={` outline-none border-none text-base tracking-wide capitalize font-semibold text-txtPrimary w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
+                                  className={` outline-none border-none text-base font-cooper-bt tracking-wide capitalize font-semibold text-txtPrimary w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
                                     }`}
                                 />
 
@@ -1208,7 +1208,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
                                   name="title"
                                   type="text"
                                   readOnly={true}
-                                  className={`outline-none border-none text-base tracking-wide capitalize font-semibold text-txtPrimary w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
+                                  className={`outline-none border-none text-base font-cooper-bt tracking-wide capitalize font-semibold text-txtPrimary w-full ${isEdit ? "bg-gray-200" : "bg-transparent"
                                     }`}
                                 />
                               </div>
