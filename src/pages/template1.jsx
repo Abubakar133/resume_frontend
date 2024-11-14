@@ -449,7 +449,12 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
   // };
 
 
-
+  useEffect(() => {
+    if (!sessionStorage.getItem("hasReloaded")) {
+      sessionStorage.setItem("hasReloaded", "true");
+      window.location.reload();
+    }
+  }, []);
 
   const generatePDF = () => {
     //toggleVisibility();
@@ -618,9 +623,9 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
     <div className="lg:w-full   lg:flex lg:flex-col items-center justify-start gap-4 overflow-hidden">
       <div className="w-full  w-[300px]  lg:w-[1200px] grid grid-cols-1 lg:grid-cols-12 px-6 lg:px-32">
         <div className="col-span-12 px-4 py-6">
-          <div className="flex flex-wrap items-center justify-center w-full gap-4 lg:gap-12 mb-4">
-            {/* Edit Button */}
-
+        
+       {/*  <div className="flex flex-wrap items-center justify-center w-full gap-4 lg:gap-12 mb-4">
+           
 
 
 
@@ -653,7 +658,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
               <BiSolidBookmarks className="text-sm text-txtPrimary" />
               <p className="text-sm text-txtPrimary font-cooper-bt">hlaða upp í ský</p>
 
-              {/* Hidden file input for selecting PDF files */}
+             
               <input
                 type="file"
                 accept=".pdf"
@@ -663,7 +668,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
               />
             </div>
 
-            {/* Download Section */}
+          
             <div className="flex flex-wrap items-center justify-center gap-2">
               <p className="text-sm text-txtPrimary font-cooper-bt">Sækja : </p>
               <BsFiletypePdf
@@ -680,7 +685,7 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
               />
             </div>
           </div>
-
+          */}
 
 
 
@@ -1231,6 +1236,69 @@ const Template1 = ({ formData, experiences, education, skills, Languages }) => {
 
 
 
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center w-full gap-4 lg:gap-12 mb-4 mt-5">
+            {/* Edit Button */}
+
+
+
+
+            {remainingDays !== null && (
+              <div className="text-sm text-red-500 ">
+
+                Þú átt {remainingDays} daga eftir af áskriftinni þinni.
+              </div>
+            )}
+
+            {!subscriptionUpdated && (
+              <div
+                className="flex items-center justify-center gap-1 px-3 py-1  rounded-md bg-red-200 cursor-pointer"
+                onClick={handlePaymentAndDownload}
+              >
+                {isEdit ? (
+                  <FaPenToSquare className="text-sm text-txtPrimary" />
+                ) : (
+                  <FaPencil className="text-sm text-txtPrimary" />
+                )}
+                <p className="text-sm text-txtPrimary font-cooper-bt">halda áfram að greiða</p>
+              </div>
+            )}
+
+
+            <div
+              className="flex items-center justify-center gap-1 px-3 py-1 rounded-md bg-gray-200 cursor-pointer"
+              onClick={handleIconClick} 
+            >
+              <BiSolidBookmarks className="text-sm text-txtPrimary" />
+              <p className="text-sm text-txtPrimary font-cooper-bt">hlaða upp í ský</p>
+
+              {/* Hidden file input for selecting PDF files */}
+              <input
+                type="file"
+                accept=".pdf"
+                ref={fileInputRefs} // Assign ref to this input
+                className="hidden" // Hide the actual input element
+                onChange={(event) => handleUploadPDF(event)}
+              />
+            </div>
+
+            {/* Download Section */}
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <p className="text-sm text-txtPrimary font-cooper-bt">Sækja : </p>
+              <BsFiletypePdf
+                className="text-xl md:text-2xl text-txtPrimary cursor-pointer"
+                onClick={generatePDF}
+              />
+              <BsFiletypePng
+                className="text-xl md:text-2xl text-txtPrimary cursor-pointer"
+                onClick={() => generateImage('png')}
+              />
+              <BsFiletypeJpg
+                className="text-xl md:text-2xl text-txtPrimary cursor-pointer"
+                onClick={() => generateImage('jpg')}
+              />
+            </div>
           </div>
         </div>
       </div>
