@@ -60,7 +60,7 @@ function Header() {
         
 
         
-  <a >
+  <a href="/" >
     <img
       fetchpriority="high"
       width="200"
